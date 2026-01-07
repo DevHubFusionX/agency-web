@@ -12,18 +12,18 @@ const ProjectDetail = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title={`${project.title} - Case Study`}
         description={project.description}
         image={project.image}
       />
-      
+
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="mb-8">
-            <img 
-              src={project.image} 
+            <img
+              src={project.image}
               alt={project.title}
               className="w-full h-64 object-cover rounded-lg mb-6"
             />

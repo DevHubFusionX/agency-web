@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const SEO = ({ 
+const SEO = ({
   title = "Digital Agency - Web Development & Design Solutions",
   description = "Professional web development, design, and digital marketing services. Transform your business with our expert team.",
   keywords = "web development, digital agency, web design, react development, digital marketing",
@@ -13,8 +13,8 @@ const SEO = ({
 
     // Update meta tags
     const updateMeta = (name, content) => {
-      let meta = document.querySelector(`meta[name="${name}"]`) || 
-                 document.querySelector(`meta[property="${name}"]`)
+      let meta = document.querySelector(`meta[name="${name}"]`) ||
+        document.querySelector(`meta[property="${name}"]`)
       if (!meta) {
         meta = document.createElement('meta')
         meta.setAttribute(name.startsWith('og:') ? 'property' : 'name', name)

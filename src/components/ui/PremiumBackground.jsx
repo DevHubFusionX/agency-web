@@ -5,7 +5,7 @@ import * as THREE from 'three'
 
 const CodeParticles = () => {
   const pointsRef = useRef()
-  
+
   const particles = useMemo(() => {
     const positions = new Float32Array(800 * 3)
     for (let i = 0; i < 800; i++) {
@@ -15,14 +15,14 @@ const CodeParticles = () => {
     }
     return positions
   }, [])
-  
+
   useFrame((state) => {
     if (pointsRef.current) {
       pointsRef.current.rotation.y = state.clock.elapsedTime * 0.02
       pointsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.5) * 0.1
     }
   })
-  
+
   return (
     <Points ref={pointsRef} positions={particles} stride={3}>
       <PointMaterial
@@ -38,7 +38,7 @@ const CodeParticles = () => {
 
 const FloatingCubes = () => {
   const groupRef = useRef()
-  
+
   const cubes = useMemo(() => {
     return [...Array(12)].map((_, i) => ({
       position: [
@@ -50,7 +50,7 @@ const FloatingCubes = () => {
       scale: 0.3 + Math.random() * 0.4
     }))
   }, [])
-  
+
   useFrame((state) => {
     if (groupRef.current) {
       groupRef.current.children.forEach((cube, i) => {
@@ -60,7 +60,7 @@ const FloatingCubes = () => {
       })
     }
   })
-  
+
   return (
     <group ref={groupRef}>
       {cubes.map((cube, i) => (
@@ -80,14 +80,14 @@ const FloatingCubes = () => {
 
 const StartupRings = () => {
   const groupRef = useRef()
-  
+
   useFrame((state) => {
     if (groupRef.current) {
       groupRef.current.rotation.z = state.clock.elapsedTime * 0.1
       groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.3) * 0.5
     }
   })
-  
+
   return (
     <group ref={groupRef} position={[0, 0, -6]}>
       {[...Array(4)].map((_, i) => (
@@ -106,7 +106,7 @@ const StartupRings = () => {
 
 const TechSphere = ({ position }) => {
   const meshRef = useRef()
-  
+
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.x = state.clock.elapsedTime * 0.3
@@ -115,7 +115,7 @@ const TechSphere = ({ position }) => {
       meshRef.current.scale.setScalar(scale)
     }
   })
-  
+
   return (
     <mesh ref={meshRef} position={position}>
       <icosahedronGeometry args={[0.8, 2]} />
@@ -139,7 +139,7 @@ const PremiumBackground = () => {
         <ambientLight intensity={0.4} />
         <pointLight position={[10, 10, 10]} intensity={0.8} />
         <pointLight position={[-10, -10, -10]} intensity={0.4} color="#3b82f6" />
-        
+
         <CodeParticles />
         <FloatingCubes />
         <StartupRings />

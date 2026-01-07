@@ -5,7 +5,7 @@ const ContactHero = () => {
   return (
     <Section className="py-24 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50"></div>
-      
+
       <div className="relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,7 +14,7 @@ const ContactHero = () => {
         >
           ✨ Let's Start Your Digital Transformation
         </motion.div>
-        
+
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -26,14 +26,14 @@ const ContactHero = () => {
             Extraordinary?
           </span>
         </motion.h1>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
         >
-          Connect with our team of strategists, designers, and technologists to explore how we can 
+          Connect with our team of strategists, designers, and technologists to explore how we can
           transform your vision into a powerful digital reality that drives measurable business growth.
         </motion.p>
       </div>

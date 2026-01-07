@@ -1,50 +1,104 @@
+import { motion } from 'framer-motion'
+import { Star, Quote } from 'lucide-react'
+import Section from './ui/Section'
 import { testimonials } from '../data/testimonials'
 
 const Testimonials = () => {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-headline text-3xl font-bold text-gray-900 mb-4">
-            What Our Clients Say
-          </h2>
-          <p className="text-body text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what industry leaders say about working with us.
-          </p>
+    <Section className="py-24 md:py-32 relative overflow-hidden bg-white">
+      {/* Background Decorative Text */}
+      <div className="absolute top-20 left-10 opacity-[0.03] pointer-events-none select-none uppercase font-black text-[12vw] whitespace-nowrap leading-none tracking-tighter">
+        Nemvol Trust
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
+          <div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-black uppercase tracking-[0.2em] mb-8"
+            >
+              Voice of Partners
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-6xl md:text-8xl font-bold text-gray-900 leading-[0.9] tracking-tight"
+            >
+              Trusted by <br />
+              <span className="text-blue-600 italic">Market Leaders.</span>
+            </motion.h2>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="lg:pt-20"
+          >
+            <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed font-medium">
+              Success is a collaborative effort. We take pride in building long-lasting relationships based on technical excellence and shared vision.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: index * 0.1 }}
+              className="relative bg-white p-10 md:p-12 rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 hover:shadow-2xl transition-all duration-500 group"
+            >
+              <div className="absolute top-10 right-10 text-blue-50 group-hover:text-blue-100 transition-colors duration-500 pointer-events-none">
+                <Quote size={80} fill="currentColor" />
               </div>
-              
-              <blockquote className="text-gray-700 mb-6 italic">
-                "{testimonial.quote}"
-              </blockquote>
-              
-              <div className="flex items-center">
-                <img 
-                  src={testimonial.avatar} 
-                  alt={testimonial.author}
-                  className="w-12 h-12 rounded-full mr-4"
-                />
+
+              <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
-                  <div className="font-semibold text-gray-900">{testimonial.author}</div>
-                  <div className="text-sm text-gray-600">{testimonial.position}</div>
-                  <div className="text-sm text-gray-500">{testimonial.company}</div>
+                  <div className="flex items-center gap-1 mb-8">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} size={18} className="fill-blue-600 text-blue-600" />
+                    ))}
+                  </div>
+
+                  <blockquote className="text-2xl md:text-3xl font-bold text-gray-900 leading-snug mb-12">
+                    "{testimonial.quote}"
+                  </blockquote>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="relative">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.author}
+                      className="w-16 h-16 rounded-2xl object-cover border-2 border-white shadow-lg"
+                    />
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-blue-600 rounded-lg flex items-center justify-center border-2 border-white">
+                      <Quote size={10} className="text-white fill-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xl font-bold text-gray-900 leading-tight">{testimonial.author}</div>
+                    <div className="text-sm font-black uppercase tracking-widest text-blue-600 mb-1">{testimonial.position}</div>
+                    <div className="text-sm text-gray-400">{testimonial.company}</div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }
 

@@ -7,94 +7,109 @@ const LoadingScreen = ({ onComplete }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false)
-      setTimeout(onComplete, 500)
-    }, 3000)
+      setTimeout(onComplete, 800) // Slightly longer to allow exit animation
+    }, 2500)
 
     return () => clearTimeout(timer)
   }, [onComplete])
+
+  const name = "NEMVOL"
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-primary"
+          exit={{
+            opacity: 0,
+            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+          }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-gray-950 overflow-hidden"
         >
-          <div className="text-center">
-            {/* Animated Logo */}
+          {/* Technical Grid Background */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+            style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+
+          <div className="relative text-center">
+            {/* Animated Logo Icon */}
             <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="mb-8"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
+              className="mb-12 relative inline-block"
             >
-              <div className="relative">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-xl"
-                >
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.8, duration: 0.3, type: "spring" }}
-                    className="text-4xl font-bold text-primary font-serif"
-                  >
-                    A
-                  </motion.span>
-                </motion.div>
-                
-                {/* Rotating Ring */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 w-24 h-24 border-4 border-white/30 border-t-white rounded-full"
-                />
+              <div className="w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-blue-900/40 relative z-10">
+                <span className="text-white font-black text-4xl tracking-tighter">N</span>
               </div>
+
+              {/* Outer Pulse Rings */}
+              <motion.div
+                animate={{ scale: [1, 1.5], opacity: [0.3, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                className="absolute inset-0 border border-blue-500 rounded-3xl z-0"
+              />
+              <motion.div
+                animate={{ scale: [1, 1.8], opacity: [0.2, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
+                className="absolute inset-0 border border-blue-400 rounded-3xl z-0"
+              />
             </motion.div>
 
-            {/* Company Name */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
-              className="text-white"
-            >
-              <h1 className="text-4xl font-serif font-bold mb-2">Agency</h1>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.8, duration: 0.4 }}
-                className="text-white/80 text-lg"
-              >
-                Digital Excellence
-              </motion.p>
-            </motion.div>
+            {/* Brand Name with Staggered Characters */}
+            <div className="flex justify-center gap-2 mb-4 overflow-hidden">
+              {name.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.5 + (i * 0.1),
+                    ease: [0.76, 0, 0.24, 1]
+                  }}
+                  className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase leading-none"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
 
-            {/* Loading Dots */}
+            {/* Subtitle / Tech Tag */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2.2, duration: 0.4 }}
-              className="flex justify-center space-x-2 mt-8"
+              animate={{ opacity: 0.4 }}
+              transition={{ delay: 1.5, duration: 1 }}
+              className="flex items-center justify-center gap-4 text-white"
             >
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{
-                    duration: 0.6,
-                    repeat: Infinity,
-                    delay: i * 0.2
-                  }}
-                  className="w-2 h-2 bg-white rounded-full"
-                />
-              ))}
+              <div className="h-[1px] w-8 bg-white/20"></div>
+              <span className="text-xs font-black uppercase tracking-[0.4em]">Engineered Excellence</span>
+              <div className="h-[1px] w-8 bg-white/20"></div>
             </motion.div>
+
+            {/* Precision Loading Bar */}
+            <div className="mt-16 w-48 h-1 bg-white/5 rounded-full mx-auto relative overflow-hidden border border-white/5">
+              <motion.div
+                initial={{ x: "-100%" }}
+                animate={{ x: "100%" }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 bg-blue-500 rounded-full"
+              />
+            </div>
           </div>
+
+          {/* Bottom Right Counter/System Tag */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.3 }}
+            className="absolute bottom-10 right-10 text-white font-mono text-[10px] tracking-widest text-right"
+          >
+            SYSTEM_STATUS: STABLE<br />
+            NEMVOL_CORE_v2.0
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

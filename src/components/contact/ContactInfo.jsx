@@ -13,7 +13,7 @@ const ContactInfo = () => {
           className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
         >
           <h3 className="text-xl font-bold text-gray-900 mb-6">Get in Touch</h3>
-          
+
           <div className="space-y-6">
             <div className="flex items-start">
               <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
@@ -25,7 +25,7 @@ const ContactInfo = () => {
                 <p className="text-sm text-gray-500">Response within 4 hours</p>
               </div>
             </div>
-            
+
             <div className="flex items-start">
               <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
                 <Phone size={20} className="text-blue-600" />
@@ -36,7 +36,7 @@ const ContactInfo = () => {
                 <p className="text-sm text-gray-500">Mon-Fri, 9AM-6PM EST</p>
               </div>
             </div>
-            
+
             <div className="flex items-start">
               <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
                 <MapPin size={20} className="text-blue-600" />
@@ -48,7 +48,7 @@ const ContactInfo = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-100 mt-8 pt-6">
             <div className="flex gap-3">
               <a
@@ -66,7 +66,7 @@ const ContactInfo = () => {
             </div>
           </div>
         </motion.div>
-        
+
         {/* Office Hours */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -78,7 +78,7 @@ const ContactInfo = () => {
             <Clock size={24} className="text-blue-600 mr-3" />
             <h3 className="text-xl font-bold text-gray-900">Office Hours</h3>
           </div>
-          
+
           <div className="space-y-3">
             {[
               { day: 'Monday - Friday', hours: '9:00 AM - 6:00 PM' },
@@ -91,14 +91,14 @@ const ContactInfo = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="mt-6 p-4 bg-blue-50 rounded-lg">
             <p className="text-sm text-blue-800">
               <strong>Emergency Support:</strong> Available 24/7 for existing clients with critical issues.
             </p>
           </div>
         </motion.div>
-        
+
         {/* FAQ */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -107,7 +107,7 @@ const ContactInfo = () => {
           className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
         >
           <h3 className="text-xl font-bold text-gray-900 mb-6">Quick Answers</h3>
-          
+
           <div className="space-y-4">
             {[
               {

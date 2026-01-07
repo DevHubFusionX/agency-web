@@ -1,95 +1,143 @@
 import { motion } from 'framer-motion'
-import Button from './ui/Button'
+import { ArrowUpRight, Code, Layout, Smartphone, Database } from 'lucide-react'
 import Section from './ui/Section'
+
+const BentoCard = ({ title, description, icon: Icon, capabilities, className, delay, highlight }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, delay }}
+      whileHover={{ y: -8 }}
+      className={`relative overflow-hidden rounded-[2.5rem] p-10 border transition-all duration-500 group flex flex-col justify-between ${highlight
+          ? 'bg-blue-600 border-blue-600 text-white shadow-2xl shadow-blue-200'
+          : 'bg-white border-gray-100 shadow-xl shadow-gray-100/50 hover:shadow-2xl'
+        } ${className}`}
+    >
+      <div className="z-10 relative">
+        <div className="flex items-center justify-between mb-8">
+          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-300 ${highlight ? 'bg-white/20' : 'bg-gray-50 group-hover:bg-blue-50'
+            }`}>
+            <Icon size={28} className={highlight ? 'text-white' : 'text-gray-900 group-hover:text-blue-600'} />
+          </div>
+          <ArrowUpRight className={highlight ? 'text-white/40 group-hover:text-white' : 'text-gray-300 group-hover:text-blue-600'} />
+        </div>
+
+        <h3 className={`text-3xl font-bold mb-4 tracking-tight ${highlight ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
+        <p className={`text-lg mb-8 leading-relaxed ${highlight ? 'text-blue-50' : 'text-gray-500'}`}>{description}</p>
+      </div>
+
+      <div className="flex flex-wrap gap-2 pt-6 border-t border-white/10 group-hover:border-white/20 transition-colors relative z-10">
+        {capabilities.map((cap, i) => (
+          <span
+            key={i}
+            className={`px-4 py-1.5 text-xs font-black uppercase tracking-widest rounded-full border transition-all duration-300 ${highlight
+                ? 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-blue-600'
+                : 'bg-gray-50 border-gray-100 text-gray-400 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white'
+              }`}
+          >
+            {cap}
+          </span>
+        ))}
+      </div>
+
+      {/* Background Decorative Element */}
+      {!highlight && (
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gray-50/50 rounded-bl-[5rem] -mr-10 -mt-10 transition-transform group-hover:scale-110 pointer-events-none" />
+      )}
+    </motion.div>
+  )
+}
 
 const CoreCapabilities = () => {
   return (
-    <Section background="gray" className="py-20">
-      <div className="text-center mb-16">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-        >
-          Specialized App Development Services
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-xl text-gray-600 max-w-3xl mx-auto"
-        >
-          From React web applications to React Native mobile apps, we deliver end-to-end development 
-          services with modern technologies and best practices.
-        </motion.p>
+    <Section className="py-24 md:py-32 relative overflow-hidden bg-white">
+      {/* Background Decorative Text */}
+      <div className="absolute top-20 right-10 opacity-[0.03] pointer-events-none select-none uppercase font-black text-[10vw] whitespace-nowrap leading-none tracking-tighter text-right">
+        Nemvol <br /> Expertise
       </div>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {[
-          {
-            title: 'Web Application Development',
-            description: 'Modern, responsive web applications built with React, Next.js, and TypeScript. Optimized for performance, SEO, and user experience.',
-            capabilities: ['React & Next.js', 'TypeScript', 'Responsive Design', 'SEO Optimization'],
-            accent: 'blue'
-          },
-          {
-            title: 'Mobile App Development',
-            description: 'Cross-platform mobile applications using React Native and Flutter. Native performance with shared codebase efficiency.',
-            capabilities: ['React Native', 'Flutter', 'iOS & Android', 'App Store Deployment'],
-            accent: 'purple'
-          },
-          {
-            title: 'Backend & Cloud Services',
-            description: 'Scalable APIs and cloud infrastructure using Node.js, Python, and modern cloud platforms. Secure, fast, and reliable.',
-            capabilities: ['Node.js & Python', 'REST & GraphQL APIs', 'AWS & Azure', 'Database Design'],
-            accent: 'green'
-          }
-        ].map((service, index) => (
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24 text-left">
+          <div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-black uppercase tracking-[0.2em] mb-8"
+            >
+              Our Capability Engine
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-6xl md:text-8xl font-bold text-gray-900 leading-[0.9] tracking-tight"
+            >
+              Built for <br />
+              <span className="text-blue-600 italic">Global Scale.</span>
+            </motion.h2>
+          </div>
+
           <motion.div
-            key={service.title}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
-            className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="lg:pt-20"
           >
-            <div className={`w-16 h-16 rounded-2xl mb-6 flex items-center justify-center ${
-              service.accent === 'blue' ? 'bg-blue-100 group-hover:bg-blue-200' :
-              service.accent === 'purple' ? 'bg-purple-100 group-hover:bg-purple-200' :
-              'bg-green-100 group-hover:bg-green-200'
-            } transition-colors duration-300`}>
-              <div className={`w-8 h-8 rounded-lg ${
-                service.accent === 'blue' ? 'bg-blue-600' :
-                service.accent === 'purple' ? 'bg-purple-600' :
-                'bg-green-600'
-              }`}></div>
-            </div>
-            
-            <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
-              {service.title}
-            </h3>
-            
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              {service.description}
+            <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed font-medium">
+              We provide the technical muscle and product strategy required to dominate markets. From high-frequency trading platforms to AI-driven health ecosystems.
             </p>
-            
-            <div className="space-y-2 mb-6">
-              {service.capabilities.map((capability, i) => (
-                <div key={i} className="flex items-center text-sm text-gray-700">
-                  <div className={`w-1.5 h-1.5 rounded-full mr-3 ${
-                    service.accent === 'blue' ? 'bg-blue-600' :
-                    service.accent === 'purple' ? 'bg-purple-600' :
-                    'bg-green-600'
-                  }`}></div>
-                  {capability}
-                </div>
-              ))}
-            </div>
-            
-            <Button variant="outline" size="sm" className="w-full group-hover:border-gray-300">
-              View Examples
-            </Button>
           </motion.div>
-        ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Card 1: Large (2 cols) - Highlighted */}
+          <BentoCard
+            title="Full-Stack Engineering"
+            description="Robust, scalable web applications built with modern architectures. We handle everything from complex backend logic to pixel-perfect frontends."
+            icon={Code}
+            capabilities={['React', 'Node.js', 'Next.js', 'PostgreSQL']}
+            className="md:col-span-2 min-h-[400px]"
+            delay={0}
+            highlight={true}
+          />
+
+          {/* Card 2: Small (1 col) */}
+          <BentoCard
+            title="Product Strategy"
+            description="Turning ambiguous ideas into clear, actionable roadmaps. We help define your MVP and growth strategy."
+            icon={Database}
+            capabilities={['Roadmapping', 'Tech Audit']}
+            className="md:col-span-1 min-h-[400px]"
+            delay={0.1}
+          />
+
+          {/* Card 3: Small (1 col) */}
+          <BentoCard
+            title="Mobile Systems"
+            description="Native mobile apps using React Native. Build once, deploy everywhere without performance compromise."
+            icon={Smartphone}
+            capabilities={['iOS', 'Android', 'React Native']}
+            className="md:col-span-1 min-h-[400px]"
+            delay={0.2}
+          />
+
+          {/* Card 4: Large (2 cols) */}
+          <BentoCard
+            title="UI/UX Design Systems"
+            description="Creating cohesive, beautiful, and accessible design systems that ensure your brand looks consistent across every touchpoint."
+            icon={Layout}
+            capabilities={['Figma', 'Prototyping', 'User Testing']}
+            className="md:col-span-2 min-h-[400px]"
+            delay={0.3}
+          />
+        </div>
       </div>
     </Section>
   )

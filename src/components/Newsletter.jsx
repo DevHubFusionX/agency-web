@@ -47,7 +47,7 @@ const Newsletter = () => {
               {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
             </button>
           </div>
-          
+
           {status === 'success' && (
             <p className="mt-3 text-green-200">Thanks for subscribing!</p>
           )}

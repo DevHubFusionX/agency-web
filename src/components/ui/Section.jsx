@@ -1,13 +1,14 @@
-const Section = ({ 
-  children, 
-  className = '', 
+const Section = ({
+  children,
+  className = '',
   containerClassName = '',
-  background = 'white' 
+  background = 'white'
 }) => {
   const backgrounds = {
     white: 'bg-white',
     gray: 'bg-gray-50',
-    dark: 'bg-gray-900 text-white'
+    dark: 'bg-gray-900 text-white',
+    none: ''
   }
 
   return (

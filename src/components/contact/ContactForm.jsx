@@ -28,11 +28,11 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     try {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 2000))
-      
+
       console.log('Form submitted:', formData)
       setSubmitted(true)
       setFormData({ name: '', email: '', company: '', projectType: '', budget: '', timeline: '', message: '' })
@@ -57,10 +57,10 @@ const ContactForm = () => {
             Start Your Project
           </h2>
           <p className="text-gray-600 mb-8 leading-relaxed">
-            Share your project details and we'll provide a comprehensive consultation 
+            Share your project details and we'll provide a comprehensive consultation
             within 24 hours, including strategic recommendations and project roadmap.
           </p>
-          
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -92,7 +92,7 @@ const ContactForm = () => {
                 />
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -127,7 +127,7 @@ const ContactForm = () => {
                 </select>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -165,7 +165,7 @@ const ContactForm = () => {
                 </select>
               </div>
             </div>
-            
+
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Project Details *
@@ -180,7 +180,7 @@ const ContactForm = () => {
                 placeholder="Describe your project goals, challenges, and requirements..."
               />
             </div>
-            
+
             <Button type="submit" size="lg" className="w-full group" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
@@ -194,7 +194,7 @@ const ContactForm = () => {
                 </>
               )}
             </Button>
-            
+
             {submitted && (
               <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
                 <p className="text-green-800 font-medium">Thank you! We'll be in touch within 24 hours.</p>
@@ -202,7 +202,7 @@ const ContactForm = () => {
             )}
           </form>
         </motion.div>
-        
+
         {/* Contact Info */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
@@ -214,7 +214,7 @@ const ContactForm = () => {
             <h3 className="text-xl font-bold text-gray-900 mb-6">
               What Happens Next?
             </h3>
-            
+
             <div className="space-y-4">
               {[
                 {
@@ -245,14 +245,14 @@ const ContactForm = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="bg-blue-50 rounded-2xl p-8">
             <div className="flex items-center mb-4">
               <CheckCircle size={24} className="text-green-500 mr-3" />
               <h4 className="font-bold text-gray-900">Commitment-Free Consultation</h4>
             </div>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Our initial consultation is completely free with no obligations. We'll provide 
+              Our initial consultation is completely free with no obligations. We'll provide
               valuable insights regardless of whether we work together.
             </p>
           </div>
