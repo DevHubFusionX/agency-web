@@ -14,22 +14,22 @@ const BentoCard = ({ title, description, icon: Icon, capabilities, className, de
         ease: [0.25, 0.4, 0.25, 1]
       }}
       whileHover={{ y: -8, scale: 1.02 }}
-      className={`relative overflow-hidden rounded-[2.5rem] p-10 border transition-all duration-500 group flex flex-col justify-between ${highlight
+      className={`relative overflow-hidden rounded-[2.5rem] p-6 md:p-10 border transition-all duration-500 group flex flex-col justify-between ${highlight
         ? 'bg-blue-600 border-blue-600 text-white shadow-2xl shadow-blue-200'
         : 'bg-white border-gray-100 shadow-xl shadow-gray-100/50 hover:shadow-2xl'
         } ${className}`}
     >
       <div className="z-10 relative">
-        <div className="flex items-center justify-between mb-8">
-          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-300 ${highlight ? 'bg-white/20' : 'bg-gray-50 group-hover:bg-blue-50'
+        <div className="flex items-center justify-between mb-6 md:mb-8">
+          <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-colors duration-300 ${highlight ? 'bg-white/20' : 'bg-gray-50 group-hover:bg-blue-50'
             }`}>
-            <Icon size={28} className={highlight ? 'text-white' : 'text-gray-900 group-hover:text-blue-600'} />
+            <Icon size={24} className={highlight ? 'text-white' : 'text-gray-900 group-hover:text-blue-600 md:w-7 md:h-7'} />
           </div>
           <ArrowUpRight className={highlight ? 'text-white/40 group-hover:text-white' : 'text-gray-300 group-hover:text-blue-600'} />
         </div>
 
-        <h3 className={`text-3xl font-bold mb-4 tracking-tight ${highlight ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
-        <p className={`text-lg mb-8 leading-relaxed ${highlight ? 'text-blue-50' : 'text-gray-500'}`}>{description}</p>
+        <h3 className={`text-2xl md:text-3xl font-bold mb-4 tracking-tight ${highlight ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
+        <p className={`text-base md:text-lg mb-6 md:mb-8 leading-relaxed ${highlight ? 'text-blue-50' : 'text-gray-500'}`}>{description}</p>
       </div>
 
       <div className="flex flex-wrap gap-2 pt-6 border-t border-white/10 group-hover:border-white/20 transition-colors relative z-10">

@@ -24,10 +24,10 @@ const HeroSection = () => {
           {/* Content Side */}
           <div className="flex flex-col items-start gap-8">
             <motion.h1
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
               Stop Guessing. <br />
@@ -35,20 +35,20 @@ const HeroSection = () => {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="text-xl md:text-2xl text-gray-500 leading-relaxed font-medium max-w-lg"
             >
               We help founders launch lean, high-performing MVPs in 8–12 weeks — focused on validation, not feature bloat.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-wrap gap-4 pt-4"
             >
               <Link
@@ -67,10 +67,10 @@ const HeroSection = () => {
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
-                  transition={{ delay: 0.35 + (i * 0.1), duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ delay: 0.25 + (i * 0.05), duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-gray-400"
                 >
                   <item.icon className="text-blue-600" size={18} />
@@ -82,10 +82,10 @@ const HeroSection = () => {
 
           {/* Visual Side: Before -> After Transformation */}
           <motion.div
-            initial={{ opacity: 0, x: 80, scale: 0.95 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
             <div className="relative space-y-4" style={{ zIndex: 10 }}>

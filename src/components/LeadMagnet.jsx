@@ -12,14 +12,14 @@ const LeadMagnet = () => {
                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-600/20 rounded-full blur-[100px] -mr-40 -mt-40" />
                     <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/10 rounded-full blur-[80px] -ml-20 -mb-20" />
 
-                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center p-12 md:p-20">
+                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center p-8 md:p-20">
                         {/* Content Column */}
-                        <div>
+                        <div className="text-center lg:text-left">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-black uppercase tracking-[0.2em] mb-8"
+                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-black uppercase tracking-[0.2em] mb-6 md:mb-8"
                             >
                                 Free Technical Resource
                             </motion.div>
@@ -29,7 +29,7 @@ const LeadMagnet = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight tracking-tight"
+                                className="text-3xl md:text-6xl font-bold text-white mb-6 md:mb-8 leading-tight tracking-tight"
                             >
                                 Download the <br />
                                 <span className="text-blue-500 italic">2026 MVP Playbook.</span>
@@ -40,7 +40,7 @@ const LeadMagnet = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-xl text-gray-400 mb-10 leading-relaxed font-medium"
+                                className="text-lg md:text-xl text-gray-400 mb-8 md:mb-10 leading-relaxed font-medium"
                             >
                                 Learn the exact framework we use to take startups from idea to validated product in under 10 weeks. Your roadmap for 2026 development.
                             </motion.p>
@@ -50,10 +50,10 @@ const LeadMagnet = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.3 }}
-                                className="space-y-4 mb-12"
+                                className="space-y-4 mb-10 md:mb-12 inline-block lg:block text-left"
                             >
                                 {[
-                                    ' ruthless prioritization framework',
+                                    'Ruthless prioritization framework',
                                     'Technical stack selection guide',
                                     'MVP to v1.0 scaling roadmap',
                                     'Bonus: Discovery Sprint template'
@@ -67,11 +67,11 @@ const LeadMagnet = () => {
                                 ))}
                             </motion.ul>
 
-                            <form className="flex flex-col sm:flex-row gap-4">
+                            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto lg:mx-0">
                                 <input
                                     type="email"
                                     placeholder="Enter your email"
-                                    className="flex-1 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                                    className="flex-1 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                                 />
                                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-2 group">
                                     Get The Playbook
@@ -80,7 +80,7 @@ const LeadMagnet = () => {
                             </form>
                         </div>
 
-                        {/* Visual Column - The "Book" */}
+                        {/* Visual Column - The "Book" (Hidden on Mobile) */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, rotate: 5, x: 20 }}
                             whileInView={{ opacity: 1, scale: 1, rotate: -2, x: 0 }}
