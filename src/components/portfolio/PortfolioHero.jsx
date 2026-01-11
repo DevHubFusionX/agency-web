@@ -3,9 +3,9 @@ import Section from '../ui/Section'
 
 const PortfolioHero = () => {
   return (
-    <Section className="min-h-[70vh] flex items-center pt-32 pb-20 relative overflow-hidden bg-white">
+    <Section className="min-h-[70vh] flex items-center pt-32 pb-20 relative overflow-hidden md:overflow-visible bg-white">
       {/* Decorative Background Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center opacity-[0.015] pointer-events-none select-none uppercase font-black text-[18vw] whitespace-nowrap leading-none tracking-tighter">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center opacity-[0.015] pointer-events-none select-none uppercase font-black text-[12vw] md:text-[18vw] whitespace-nowrap leading-none tracking-tighter">
         Our Work
       </div>
 

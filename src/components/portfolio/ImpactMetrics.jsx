@@ -57,7 +57,7 @@ const ImpactMetrics = () => {
   return (
     <Section background="white" className="py-24 md:py-32 relative">
       {/* Background Decorative Text */}
-      <div className="absolute top-20 left-10 opacity-[0.03] pointer-events-none select-none uppercase font-black text-[12vw] whitespace-nowrap leading-none tracking-tighter">
+      <div className="absolute top-20 left-10 opacity-[0.03] pointer-events-none select-none uppercase font-black text-[10vw] md:text-[12vw] whitespace-nowrap leading-none tracking-tighter">
         By the Numbers
       </div>
 

@@ -116,7 +116,12 @@ const Header = () => {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              transition={{
+                type: 'spring',
+                damping: 30,
+                stiffness: 180,
+                mass: 0.8
+              }}
               className="fixed top-0 right-0 h-full w-full sm:w-80 bg-white shadow-2xl z-50 lg:hidden overflow-y-auto"
             >
               <div className="flex flex-col h-full">
@@ -141,27 +146,34 @@ const Header = () => {
                 {/* Navigation Links */}
                 <div className="flex-1 p-6">
                   <nav className="space-y-1 mb-8">
-                    {navigation.map((item, index) => (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                      >
-                        <Link
-                          to={item.href}
-                          onClick={() => setIsOpen(false)}
-                          className={`group flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 ${isActive(item.href)
-                            ? 'bg-blue-600 text-white shadow-lg'
-                            : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
-                            }`}
+                    <AnimatePresence>
+                      {navigation.map((item, index) => (
+                        <motion.div
+                          key={item.name}
+                          initial={{ opacity: 0, x: 15 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 10 }}
+                          transition={{
+                            duration: 0.3,
+                            delay: index * 0.04,
+                            ease: [0.22, 1, 0.36, 1]
+                          }}
                         >
-                          <span>{item.name}</span>
-                          <ArrowRight size={16} className={`transition-transform group-hover:translate-x-1 ${isActive(item.href) ? 'text-white' : 'text-gray-400'
-                            }`} />
-                        </Link>
-                      </motion.div>
-                    ))}
+                          <Link
+                            to={item.href}
+                            onClick={() => setIsOpen(false)}
+                            className={`group flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 ${isActive(item.href)
+                              ? 'bg-blue-600 text-white shadow-lg shadow-blue-200/50'
+                              : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                              }`}
+                          >
+                            <span>{item.name}</span>
+                            <ArrowRight size={16} className={`transition-transform group-hover:translate-x-1 ${isActive(item.href) ? 'text-white' : 'text-gray-400'
+                              }`} />
+                          </Link>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
                   </nav>
 
                   {/* CTA Section */}

@@ -35,7 +35,7 @@ const TechnicalExpertise = () => {
   return (
     <Section background="none" className="py-24 md:py-32 relative overflow-hidden bg-blue-600">
       {/* Background Decorative Text */}
-      <div className="absolute top-20 left-10 opacity-[0.08] pointer-events-none select-none uppercase font-black text-[12vw] whitespace-nowrap leading-none tracking-tighter text-white">
+      <div className="absolute top-20 left-10 opacity-[0.08] pointer-events-none select-none uppercase font-black text-[10vw] md:text-[12vw] whitespace-nowrap leading-none tracking-tighter text-white">
         Why Nemvol
       </div>
 

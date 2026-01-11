@@ -217,7 +217,7 @@ const ProjectShowcase = () => {
   return (
     <Section className="py-24 md:py-32 relative overflow-hidden bg-gray-50">
       {/* Background Decorative Text */}
-      <div className="absolute top-20 right-10 opacity-[0.02] pointer-events-none select-none uppercase font-black text-[10vw] whitespace-nowrap leading-none tracking-tighter text-right text-gray-900">
+      <div className="absolute top-20 left-10 opacity-[0.03] pointer-events-none select-none uppercase font-black text-[12vw] md:text-[18vw] whitespace-nowrap leading-none tracking-tighter overflow-hidden">
         Case Studies
       </div>
 
