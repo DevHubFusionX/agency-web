@@ -5,7 +5,7 @@ import Button from './ui/Button'
 
 const LeadMagnet = () => {
     return (
-        <Section className="py-24 bg-white relative overflow-hidden">
+        <Section className="hidden md:block py-24 bg-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="relative bg-gray-900 rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-900/10">
                     {/* Background Accents */}
