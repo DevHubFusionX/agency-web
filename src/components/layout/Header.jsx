@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Smartphone, Mail, Phone, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
-import logo from '../../assets/logo.svg'
+import Logo from '../ui/Logo'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -28,93 +28,75 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-5xl px-4">
-        <motion.nav
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="relative group"
-        >
-          {/* Animated Gradient Border Layer */}
-          <div className="absolute -inset-[1px] bg-sky-400 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-sky-400 group-hover:to-blue-600 rounded-2xl blur-[2px] opacity-20 group-hover:opacity-40 transition-all duration-700 animate-gradient-xy"></div>
+      <header className="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300">
+        <nav className="bg-white/80 backdrop-blur-xl border-b border-gray-100 relative">
+          {/* Scroll Progress Bar */}
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 h-[3px] bg-blue-600 origin-left z-20"
+            style={{ scaleX }}
+          />
 
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.06)] border border-white/40 overflow-hidden relative z-10">
-            {/* Scroll Progress Bar (Glowing) */}
-            <motion.div
-              className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-600 via-sky-400 to-blue-600 origin-left z-20 shadow-[0_0_10px_rgba(37,99,235,0.5)]"
-              style={{ scaleX }}
-            />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
+            {/* Logo */}
+            <Link to="/" className="flex items-center group flex-shrink-0">
+              <div className="flex items-center gap-2 transition-transform duration-300 group-hover:scale-[1.02]">
+                <Logo className="h-12 w-auto" iconOnly={false} />
+              </div>
+            </Link>
 
-            <div className="flex justify-between items-center px-8 py-4">
-              {/* Logo with Magnetic Hover */}
-              <motion.div
-                whileHover={{ x: -2, y: -1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <Link to="/" className="flex items-center space-x-3 group/logo">
-                  <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-100 group-hover/logo:rotate-6 transition-transform duration-300">
-                    <img src={logo} alt="Nemvol" className="w-6 h-6 invert brightness-0" />
-                  </div>
-                  <span className="text-xl font-black text-gray-900 tracking-tighter uppercase">Nemvol</span>
-                </Link>
-              </motion.div>
-
-              {/* Desktop Navigation with Sliding Underline */}
-              <div className="hidden lg:flex items-center space-x-8 relative">
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden lg:flex items-center justify-center flex-1 px-8">
+              <div className="flex items-center gap-1">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`relative py-2 text-xs font-black uppercase tracking-widest transition-colors duration-300 z-10 ${isActive(item.href) ? 'text-blue-600' : 'text-gray-500 hover:text-gray-900'
+                    className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${isActive(item.href)
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                       }`}
                   >
-                    {isActive(item.href) && (
-                      <motion.div
-                        layoutId="activeNavUnderline"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 shadow-[0_2px_10px_rgba(37,99,235,0.4)]"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
-                    )}
                     {item.name}
                   </Link>
                 ))}
               </div>
-
-              {/* Desktop CTA with Magnetic Hover */}
-              <motion.div
-                className="hidden lg:flex items-center ml-4"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  to="/contact"
-                  className="bg-gray-900 text-white px-7 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition-all duration-300 flex items-center gap-2 group/btn shadow-lg shadow-gray-200 hover:shadow-blue-200"
-                >
-                  Start Project
-                  <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
-
-              {/* Mobile menu button */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={isOpen ? 'close' : 'open'}
-                    initial={{ opacity: 0, rotate: -90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
-                  </motion.div>
-                </AnimatePresence>
-              </button>
             </div>
+
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center flex-shrink-0">
+              <Link
+                to="/contact"
+                className="bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-200 transition-all duration-300 flex items-center gap-2 group/btn"
+              >
+                Start Project
+                <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Spacer for mobile to push menu button right */}
+            <div className="flex-1 lg:hidden" />
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2.5 rounded-xl hover:bg-gray-100 transition-colors text-gray-900"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={isOpen ? 'close' : 'open'}
+                  initial={{ opacity: 0, rotate: -90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {isOpen ? <X size={26} /> : <Menu size={26} />}
+                </motion.div>
+              </AnimatePresence>
+            </button>
           </div>
-        </motion.nav>
+        </nav>
       </header>
+
 
       {/* Mobile Sidebar */}
       <AnimatePresence>
@@ -140,14 +122,10 @@ const Header = () => {
               <div className="flex flex-col h-full">
                 {/* Sidebar Header */}
                 <div className="p-6 border-b border-gray-100">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <img src={logo} alt="Nemvol" className="w-10 h-10 rounded-lg" />
-                      <div>
-                        <span className="text-xl font-bold text-gray-900">Nemvol</span>
-                        <p className="text-xs text-gray-500">Web Development Agency</p>
-                      </div>
-                    </div>
+                  <div className="flex items-center justify-between">
+                    <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center text-blue-600">
+                      <Logo className="h-16 w-auto" iconOnly={false} />
+                    </Link>
                     <button
                       onClick={() => setIsOpen(false)}
                       className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
@@ -155,7 +133,9 @@ const Header = () => {
                       <X size={20} />
                     </button>
                   </div>
-                  <p className="text-sm text-gray-600">React & React Native Specialists</p>
+                  <p className="text-sm text-gray-500 mt-4 leading-relaxed">
+                    Product Development & Digital Solutions Agency
+                  </p>
                 </div>
 
                 {/* Navigation Links */}
@@ -225,5 +205,6 @@ const Header = () => {
     </>
   )
 }
+
 
 export default Header

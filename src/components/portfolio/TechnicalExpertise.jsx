@@ -1,115 +1,119 @@
 import { motion } from 'framer-motion'
+import { Brain, Target, Globe, Handshake, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import Section from '../ui/Section'
+import Button from '../ui/Button'
 
-const technologies = [
-  { name: 'React', category: 'Frontend', level: 95, color: '#61DAFB' },
-  { name: 'TypeScript', category: 'Frontend', level: 90, color: '#3178C6' },
-  { name: 'Next.js', category: 'Frontend', level: 92, color: '#000000' },
-  { name: 'React Native', category: 'Mobile', level: 88, color: '#61DAFB' },
-  { name: 'Node.js', category: 'Backend', level: 90, color: '#339933' },
-  { name: 'PostgreSQL', category: 'Backend', level: 85, color: '#4169E1' },
-  { name: 'AWS', category: 'Cloud', level: 88, color: '#FF9900' },
-  { name: 'Docker', category: 'Cloud', level: 82, color: '#2496ED' },
+const differentiators = [
+  {
+    icon: Brain,
+    title: 'Product-First Mindset',
+    description: "We're PM-led, not dev-led. Every decision is tied to business outcomes, not just technical elegance.",
+    highlight: 'PM-led approach'
+  },
+  {
+    icon: Target,
+    title: 'Fixed Outcomes',
+    description: "Clear scope, milestones, and SLAs. No hourly billing surprises. You know exactly what you're getting.",
+    highlight: 'Milestone guarantees'
+  },
+  {
+    icon: Globe,
+    title: 'Local + Global',
+    description: 'African-market UX expertise with global engineering standards. We understand your users AND the tech.',
+    highlight: 'Africa-ready UX'
+  },
+  {
+    icon: Handshake,
+    title: 'Beyond Launch',
+    description: "We stay after deployment. Growth retainers, iteration, and optimization are part of our DNA.",
+    highlight: 'Long-term partner'
+  }
 ]
 
 const TechnicalExpertise = () => {
   return (
-    <Section className="py-24">
-      <div className="text-center mb-16">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight"
-        >
-          Our Tech Stack
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-xl text-gray-500 max-w-lg mx-auto"
-        >
-          The tools we master to build great products.
-        </motion.p>
+    <Section background="none" className="py-24 md:py-32 relative overflow-hidden bg-blue-600">
+      {/* Background Decorative Text */}
+      <div className="absolute top-20 left-10 opacity-[0.08] pointer-events-none select-none uppercase font-black text-[12vw] whitespace-nowrap leading-none tracking-tighter text-white">
+        Why Nemvol
       </div>
 
-      {/* Creative Bar Chart */}
-      <div className="max-w-4xl mx-auto">
-        <div className="space-y-5">
-          {technologies.map((tech, index) => (
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
+          <div>
             <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-black uppercase tracking-[0.2em] mb-8 border border-white/20"
             >
-              <div className="flex items-center gap-4">
-                {/* Tech Name */}
-                <div className="w-28 shrink-0">
-                  <span className="text-sm font-medium text-gray-700">{tech.name}</span>
+              Our Advantage
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-7xl font-bold text-white leading-[0.9] tracking-tight"
+            >
+              The Nemvol <br />
+              <span className="text-white/90 italic">Difference.</span>
+            </motion.h2>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="lg:pt-20"
+          >
+            <p className="text-xl md:text-2xl text-blue-50 max-w-xl leading-relaxed mb-8 font-medium">
+              More structured than freelancers. Faster and more founder-friendly than big agencies. The sweet spot for MVPs.
+            </p>
+            <Link to="/contact">
+              <Button size="lg" className="bg-white hover:bg-blue-50 !text-blue-600 px-8 py-4 rounded-full font-bold shadow-xl shadow-blue-900/20 group">
+                Let's Talk
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Differentiators Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {differentiators.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -4 }}
+              className="bg-white/5 backdrop-blur-sm rounded-[2rem] p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+            >
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                  <item.icon size={28} className="text-white" />
                 </div>
-
-                {/* Bar Container */}
-                <div className="flex-1 h-10 bg-gray-50 rounded-full overflow-hidden relative">
-                  {/* Animated Bar */}
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${tech.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, delay: index * 0.1, ease: "easeOut" }}
-                    className="h-full rounded-full relative overflow-hidden"
-                    style={{
-                      background: `linear-gradient(90deg, ${tech.color}20, ${tech.color}60)`,
-                    }}
-                  >
-                    {/* Shimmer Effect */}
-                    <motion.div
-                      className="absolute inset-0 opacity-30"
-                      style={{
-                        background: `linear-gradient(90deg, transparent, white, transparent)`,
-                      }}
-                      animate={{ x: ['-100%', '200%'] }}
-                      transition={{ duration: 2, delay: 1 + index * 0.1, repeat: Infinity, repeatDelay: 3 }}
-                    />
-
-                    {/* Dot Indicator */}
-                    <div
-                      className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full flex items-center justify-center shadow-sm"
-                      style={{ backgroundColor: tech.color }}
-                    >
-                      <span className="text-xs font-bold text-white">{tech.level}</span>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Category Badge */}
-                <div className="w-20 shrink-0">
-                  <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full">{tech.category}</span>
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                    <span className="px-2 py-0.5 bg-white/10 rounded-full text-xs font-bold text-blue-100 uppercase tracking-wider">
+                      {item.highlight}
+                    </span>
+                  </div>
+                  <p className="text-blue-50 leading-relaxed font-medium">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Legend */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 1 }}
-          className="flex justify-center gap-6 mt-10"
-        >
-          {['Frontend', 'Mobile', 'Backend', 'Cloud'].map((cat) => (
-            <div key={cat} className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-              <span className="text-xs text-gray-500">{cat}</span>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </Section>
   )

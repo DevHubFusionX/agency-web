@@ -5,14 +5,18 @@ import Section from './ui/Section'
 const BentoCard = ({ title, description, icon: Icon, capabilities, className, delay, highlight }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay }}
-      whileHover={{ y: -8 }}
+      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        duration: 0.7,
+        delay,
+        ease: [0.25, 0.4, 0.25, 1]
+      }}
+      whileHover={{ y: -8, scale: 1.02 }}
       className={`relative overflow-hidden rounded-[2.5rem] p-10 border transition-all duration-500 group flex flex-col justify-between ${highlight
-          ? 'bg-blue-600 border-blue-600 text-white shadow-2xl shadow-blue-200'
-          : 'bg-white border-gray-100 shadow-xl shadow-gray-100/50 hover:shadow-2xl'
+        ? 'bg-blue-600 border-blue-600 text-white shadow-2xl shadow-blue-200'
+        : 'bg-white border-gray-100 shadow-xl shadow-gray-100/50 hover:shadow-2xl'
         } ${className}`}
     >
       <div className="z-10 relative">
@@ -33,8 +37,8 @@ const BentoCard = ({ title, description, icon: Icon, capabilities, className, de
           <span
             key={i}
             className={`px-4 py-1.5 text-xs font-black uppercase tracking-widest rounded-full border transition-all duration-300 ${highlight
-                ? 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-blue-600'
-                : 'bg-gray-50 border-gray-100 text-gray-400 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white'
+              ? 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-blue-600'
+              : 'bg-gray-50 border-gray-100 text-gray-400 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white'
               }`}
           >
             {cap}
@@ -63,19 +67,20 @@ const CoreCapabilities = () => {
           <div>
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -20, scale: 0.9 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-black uppercase tracking-[0.2em] mb-8"
             >
               Our Capability Engine
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
               className="text-6xl md:text-8xl font-bold text-gray-900 leading-[0.9] tracking-tight"
             >
               Built for <br />
@@ -84,10 +89,10 @@ const CoreCapabilities = () => {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.25, duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
             className="lg:pt-20"
           >
             <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed font-medium">
@@ -99,10 +104,10 @@ const CoreCapabilities = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1: Large (2 cols) - Highlighted */}
           <BentoCard
-            title="Full-Stack Engineering"
-            description="Robust, scalable web applications built with modern architectures. We handle everything from complex backend logic to pixel-perfect frontends."
+            title="Build Your MVP"
+            description="We build your functional web or mobile product in 8-12 weeks, ready for users and investors."
             icon={Code}
-            capabilities={['React', 'Node.js', 'Next.js', 'PostgreSQL']}
+            capabilities={['8-12 Weeks', 'Full-stack', 'Cloud-native', 'Scalable']}
             className="md:col-span-2 min-h-[400px]"
             delay={0}
             highlight={true}
@@ -110,30 +115,30 @@ const CoreCapabilities = () => {
 
           {/* Card 2: Small (1 col) */}
           <BentoCard
-            title="Product Strategy"
-            description="Turning ambiguous ideas into clear, actionable roadmaps. We help define your MVP and growth strategy."
+            title="Validate Your Idea"
+            description="We help you define your scope and create an investor-ready brief in just 2 weeks."
             icon={Database}
-            capabilities={['Roadmapping', 'Tech Audit']}
+            capabilities={['2-Week Sprint', 'User Research', 'Wireframing', 'Roadmapping']}
             className="md:col-span-1 min-h-[400px]"
             delay={0.1}
           />
 
           {/* Card 3: Small (1 col) */}
           <BentoCard
-            title="Mobile Systems"
-            description="Native mobile apps using React Native. Build once, deploy everywhere without performance compromise."
+            title="Scale Your Impact"
+            description="We stay with you to iterate based on real data and prioritize the features your users actually want."
             icon={Smartphone}
-            capabilities={['iOS', 'Android', 'React Native']}
+            capabilities={['30-90 Days', 'Analytics', 'CRO', 'Feature Tuning']}
             className="md:col-span-1 min-h-[400px]"
             delay={0.2}
           />
 
           {/* Card 4: Large (2 cols) */}
           <BentoCard
-            title="UI/UX Design Systems"
-            description="Creating cohesive, beautiful, and accessible design systems that ensure your brand looks consistent across every touchpoint."
+            title="White-label Support"
+            description="Dedicated engineering teams for agencies. We act as your technical engine with guaranteed delivery."
             icon={Layout}
-            capabilities={['Figma', 'Prototyping', 'User Testing']}
+            capabilities={['Dedicated Team', 'NDA Protected', 'Milestone-based', 'High SLA']}
             className="md:col-span-2 min-h-[400px]"
             delay={0.3}
           />

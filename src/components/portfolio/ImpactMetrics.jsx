@@ -4,8 +4,8 @@ import Section from '../ui/Section'
 const metrics = [
   {
     metric: '50+',
-    label: 'Products Launched',
-    description: 'Shipped to real users',
+    label: 'MVPs Shipped',
+    description: 'Products launched on time',
     svg: (
       <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
         <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="2" strokeDasharray="4 2" opacity="0.3" />
@@ -16,38 +16,38 @@ const metrics = [
     )
   },
   {
-    metric: '5',
-    label: 'Continents',
-    description: 'Global reach',
+    metric: '90%',
+    label: 'Discovery → MVP',
+    description: 'Conversion rate',
+    svg: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
+        <path d="M24 4v40M4 24h40" stroke="currentColor" strokeWidth="1" opacity="0.2" />
+        <path d="M24 4 L44 24 L24 44 L4 24 Z" stroke="currentColor" strokeWidth="2" fill="none" />
+        <circle cx="24" cy="24" r="8" fill="currentColor" opacity="0.3" />
+      </svg>
+    )
+  },
+  {
+    metric: '10 Wks',
+    label: 'Avg Delivery',
+    description: 'From kickoff to launch',
     svg: (
       <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
         <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="2" />
-        <ellipse cx="24" cy="24" rx="8" ry="18" stroke="currentColor" strokeWidth="2" />
-        <path d="M6 24h36M10 14h28M10 34h28" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
+        <path d="M24 12v12l8 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="24" cy="24" r="3" fill="currentColor" />
       </svg>
     )
   },
   {
-    metric: '1M+',
-    label: 'End Users',
-    description: 'People impacted',
+    metric: '100%',
+    label: 'IP Ownership',
+    description: 'You own everything',
     svg: (
       <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
+        <rect x="8" y="20" width="32" height="20" rx="4" stroke="currentColor" strokeWidth="2" />
         <circle cx="24" cy="16" r="8" stroke="currentColor" strokeWidth="2" />
-        <path d="M12 40c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="38" cy="12" r="4" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
-        <circle cx="10" cy="12" r="4" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
-      </svg>
-    )
-  },
-  {
-    metric: '4.8',
-    label: 'Avg. Rating',
-    description: 'Client satisfaction',
-    svg: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
-        <path d="M24 4l5.5 11.5L42 17l-9 8.5 2 12.5-11-6-11 6 2-12.5-9-8.5 12.5-1.5L24 4z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <path d="M24 12l2.5 5.5 6 .75-4.25 4 1 6-5.25-3-5.25 3 1-6-4.25-4 6-.75L24 12z" fill="currentColor" opacity="0.3" />
+        <circle cx="24" cy="30" r="4" fill="currentColor" />
       </svg>
     )
   }
@@ -55,72 +55,89 @@ const metrics = [
 
 const ImpactMetrics = () => {
   return (
-    <Section background="gray" className="py-28 overflow-hidden">
-      <div className="relative">
-        {/* Scattered/Asymmetric Layout */}
-        <div className="max-w-6xl mx-auto">
-          {/* Header - Off-center */}
+    <Section background="white" className="py-24 md:py-32 relative">
+      {/* Background Decorative Text */}
+      <div className="absolute top-20 left-10 opacity-[0.03] pointer-events-none select-none uppercase font-black text-[12vw] whitespace-nowrap leading-none tracking-tighter">
+        By the Numbers
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-black uppercase tracking-[0.2em] mb-8"
+            >
+              Track Record
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-7xl font-bold text-gray-900 leading-[0.9] tracking-tight"
+            >
+              Results That <br />
+              <span className="text-blue-600 italic">Speak Volumes.</span>
+            </motion.h2>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-20 md:ml-12"
+            transition={{ delay: 0.2 }}
+            className="lg:pt-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
-              Results That Matter
-            </h2>
+            <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed">
+              We measure success by the success of our clients. Here's what our track record looks like.
+            </p>
           </motion.div>
-
-          {/* Metrics - Staggered Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            {metrics.map((item, index) => {
-              // Create varied positioning
-              const offsets = [
-                'md:mt-0',
-                'md:mt-16',
-                'md:mt-8',
-                'md:mt-24'
-              ]
-
-              return (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  className={`group ${offsets[index]}`}
-                >
-                  <div className="bg-white rounded-3xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                    {/* SVG Icon */}
-                    <div className="w-16 h-16 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                      {item.svg}
-                    </div>
-
-                    {/* Metric */}
-                    <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">
-                      {item.metric}
-                    </div>
-
-                    {/* Label */}
-                    <div className="text-base font-medium text-gray-700 mb-1">
-                      {item.label}
-                    </div>
-
-                    {/* Description */}
-                    <div className="text-sm text-gray-400">
-                      {item.description}
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
         </div>
 
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-100 rounded-full translate-y-1/2 -translate-x-1/2 opacity-40 blur-2xl"></div>
+        {/* Metrics Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {metrics.map((item, index) => {
+            const offsets = ['md:mt-0', 'md:mt-12', 'md:mt-6', 'md:mt-20']
+
+            return (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`group ${offsets[index]}`}
+              >
+                <div className="bg-gray-50 rounded-[2rem] p-8 border border-gray-100 hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all duration-500 hover:-translate-y-2">
+                  {/* SVG Icon */}
+                  <div className="w-16 h-16 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                    {item.svg}
+                  </div>
+
+                  {/* Metric */}
+                  <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">
+                    {item.metric}
+                  </div>
+
+                  {/* Label */}
+                  <div className="text-base font-bold text-gray-800 mb-1">
+                    {item.label}
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-sm text-gray-600 font-medium">
+                    {item.description}
+                  </div>
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
       </div>
     </Section>
   )

@@ -3,39 +3,66 @@ import Section from '../ui/Section'
 
 const ContactHero = () => {
   return (
-    <Section className="py-24 md:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50"></div>
+    <Section background="none" className="min-h-[50vh] flex items-center pt-32 pb-20 relative overflow-hidden bg-white">
+      {/* Decorative Background Text */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center opacity-[0.015] pointer-events-none select-none uppercase font-black text-[18vw] whitespace-nowrap leading-none tracking-tighter">
+        Consultation
+      </div>
 
-      <div className="relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6"
-        >
-          ✨ Let's Start Your Digital Transformation
-        </motion.div>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100/50 text-blue-600 text-xs font-bold uppercase tracking-[0.2em] mb-8"
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+            Free Consultation
+          </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-        >
-          Ready to Build Something
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
-            Extraordinary?
-          </span>
-        </motion.h1>
+          {/* Main Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-8"
+          >
+            Turn Your Idea Into a <br />
+            <span className="text-blue-600 italic">Validated Product.</span>
+          </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
-        >
-          Connect with our team of strategists, designers, and technologists to explore how we can
-          transform your vision into a powerful digital reality that drives measurable business growth.
-        </motion.p>
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg md:text-2xl text-gray-500 max-w-3xl leading-relaxed mb-6 font-medium"
+          >
+            Book your free 30-minute discovery call today. We'll discuss your vision, audit your requirements, and map out a strategic path to MVP.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex items-center gap-6 text-sm font-bold text-gray-400 uppercase tracking-widest mt-4"
+          >
+            <span className="flex items-center gap-2">
+              <div className="w-1 h-1 rounded-full bg-blue-600" />
+              Strategy Audit
+            </span>
+            <span className="flex items-center gap-2">
+              <div className="w-1 h-1 rounded-full bg-blue-600" />
+              Technical Roadmap
+            </span>
+            <span className="flex items-center gap-2">
+              <div className="w-1 h-1 rounded-full bg-blue-600" />
+              Budget Estimate
+            </span>
+          </motion.div>
+        </div>
       </div>
     </Section>
   )

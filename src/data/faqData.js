@@ -1,62 +1,71 @@
 export const faqData = [
+  // MVP Strategy
   {
     id: 1,
-    category: "Services",
-    question: "What types of apps do you build?",
-    answer: "We specialize in React web applications, React Native mobile apps, and Node.js backend APIs. This includes e-commerce apps, FinTech platforms, healthcare apps, SaaS platforms, and custom business applications."
+    category: "MVP Strategy",
+    question: "Why focus on an 8-12 week MVP timeframe?",
+    answer: "Validation is our top priority. By launching within 8-12 weeks, we help founders test their core hypotheses with real users as quickly as possible, avoiding feature bloat and minimizing wasted capital before product-market fit is proven."
   },
   {
     id: 2,
-    category: "Technology",
-    question: "Why do you focus on React and React Native?",
-    answer: "React and React Native allow us to build high-performance apps with shared code and faster development cycles. React Native gives you native mobile performance with 70% code sharing between iOS and Android."
+    category: "MVP Strategy",
+    question: "How do you decide which features make it into the MVP?",
+    answer: "We use a product-led approach focused on your 'North Star' value proposition. During our Discovery Sprint, we prioritize features based on user impact, business value, and technical feasibility, ensuring the MVP solves the user's primary problem effectively."
   },
+
+  // Productized Services
   {
     id: 3,
-    category: "Timeline",
-    question: "How long does it take to build a mobile app?",
-    answer: "Simple mobile apps take 8-12 weeks, while complex apps with backend APIs take 16-24 weeks. React Native development is typically 30-40% faster than building separate native iOS and Android apps."
+    category: "Productized Services",
+    question: "What exactly happens during a 2-week Discovery Sprint?",
+    answer: "The Discovery Sprint is a high-intensity validation phase. We define your user personas, map out user flows, create high-fidelity wireframes, and finalize a prioritized MVP scope. You'll receive a full product brief and an investor-ready roadmap."
   },
   {
     id: 4,
-    category: "Pricing",
-    question: "What does a React Native app cost?",
-    answer: "React Native apps start at $25,000 for basic functionality. Complex apps with custom backends range from $50,000-$150,000. We provide detailed quotes after understanding your specific requirements."
+    category: "Productized Services",
+    question: "What is included in the MVP Express package?",
+    answer: "MVP Express covers the full design-to-deployment cycle: UI/UX design, frontend and backend development, basic analytics integration, QA testing, and launch support on web or mobile platforms (App Store/Google Play)."
   },
+
+  // Timelines
   {
     id: 5,
-    category: "Process",
-    question: "Do you handle App Store submissions?",
-    answer: "Yes, we handle the complete App Store and Google Play submission process, including app optimization, screenshots, descriptions, and compliance with store guidelines. We also provide ongoing app updates."
+    category: "Timelines",
+    question: "What is your 5-step delivery methodology?",
+    answer: "Our process is: 1. Discover (Ideation & Scope), 2. Design (UI/UX & Prototyping), 3. Build (Core Feature Dev), 4. Validate (Testing & User Feedback), 5. Grow (Scale & Iteration)."
   },
   {
     id: 6,
-    category: "Technology",
-    question: "Can you integrate with existing systems?",
-    answer: "Absolutely. We build custom APIs and integrate with existing databases, CRMs, payment systems, and third-party services. Our Node.js backend expertise ensures seamless system integration."
+    category: "Timelines",
+    question: "Can we really launch a mobile app in under 3 months?",
+    answer: "Yes. By using React Native and a lean mindset, we streamline cross-platform development. Our predefined playbooks and modular architecture allow us to build high-quality mobile apps without starting from scratch every time."
   },
+
+  // Pricing
   {
     id: 7,
-    category: "Support",
-    question: "Do you provide app maintenance?",
-    answer: "Yes, we offer ongoing maintenance packages starting at $2,000/month. This includes bug fixes, OS updates, performance monitoring, feature updates, and 24/7 technical support."
+    category: "Pricing",
+    question: "Do you offer fixed-fee pricing?",
+    answer: "Yes. Both our Discovery Sprints and MVP Express builds are fixed-fee projects. This gives you total budget certainty and aligns our goals: delivering high-quality results within the agreed timeframe."
   },
   {
     id: 8,
-    category: "Process",
-    question: "How do you ensure app quality?",
-    answer: "We use automated testing, code reviews, performance monitoring, and device testing across multiple iOS and Android versions. Every app goes through rigorous QA before launch."
+    category: "Pricing",
+    question: "How much does a Discovery Sprint cost?",
+    answer: "A standard 2-week Discovery Sprint starts at a fixed rate, providing you with a complete product plan and developer-ready designs. This is usually the best first step for any founder or project."
   },
+
+  // IP & Partnership
   {
     id: 9,
-    category: "Services",
-    question: "Do you build web apps too?",
-    answer: "Yes, we build modern web applications using React and Next.js with server-side rendering, SEO optimization, and responsive design. Many clients choose both web and mobile apps for complete coverage."
+    category: "IP & Partnership",
+    question: "Who owns the intellectual property and code?",
+    answer: "You do. 100%. Upon final payment, full ownership of all code, designs, and assets is transferred directly to your team. We provide you with the organized repositories and design files."
   },
   {
     id: 10,
-    category: "Timeline",
-    question: "Can you work with tight deadlines?",
-    answer: "We can accommodate urgent projects with our dedicated development team. Rush projects may require additional resources and have premium pricing, but we maintain our quality standards."
+    category: "IP & Partnership",
+    question: "What happens after the MVP is launched?",
+    answer: "We don't just 'hand over' and leave. We offer Growth Retainers (30-90 days) where we stay as your product partners to handle user feedback, fix bugs, run experiments, and iterate on features based on real data."
   }
 ]

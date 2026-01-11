@@ -2,7 +2,8 @@ const Section = ({
   children,
   className = '',
   containerClassName = '',
-  background = 'white'
+  background = 'white',
+  style = {}
 }) => {
   const backgrounds = {
     white: 'bg-white',
@@ -12,7 +13,7 @@ const Section = ({
   }
 
   return (
-    <section className={`py-16 ${backgrounds[background]} ${className}`}>
+    <section className={`py-16 ${backgrounds[background]} ${className}`} style={style}>
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${containerClassName}`}>
         {children}
       </div>

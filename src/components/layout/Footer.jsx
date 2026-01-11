@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github, ArrowRight, Smartphone } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import logo from '../../assets/logo.svg'
+import Logo from '../ui/Logo'
 
 const Footer = () => {
   return (
@@ -14,12 +14,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-20">
           {/* Brand Column */}
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-8 group cursor-pointer hover:opacity-80 transition-opacity">
-              <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-900/40">
-                <span className="text-white font-black text-2xl tracking-tighter">N</span>
-              </div>
-              <span className="text-3xl font-black text-white tracking-tighter uppercase">Nemvol</span>
-            </div>
+            <Link to="/" className="flex items-center text-blue-600 mb-8 group cursor-pointer transition-transform duration-300 hover:scale-[1.02]">
+              <Logo className="h-32 w-auto" iconOnly={false} />
+            </Link>
 
             <p className="text-xl text-gray-400 leading-relaxed mb-10 max-w-md font-medium">
               We engineer high-stakes digital success. We specialize in building robust, scalable applications that push the boundaries of what's possible.

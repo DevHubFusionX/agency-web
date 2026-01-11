@@ -8,49 +8,49 @@ import { Quote, Star, ArrowRight } from 'lucide-react'
 const SUCCESS_DATA = [
   {
     type: 'testimonial',
-    quote: "Our React Native app launched flawlessly. The team delivered exceptional quality and the app maintained a 4.8-star rating with over 100K downloads.",
+    quote: "Nemvol built our MVP in record time. Their discovery-first approach saved us months of wasted development on features users didn't actually need.",
     author: "Sarah Chen",
-    role: "Product Manager",
+    role: "Founder",
     company: "FinanceFlow",
-    metric: "100K+",
-    label: "Downloads",
+    metric: "10 Wks",
+    label: "Delivery",
     color: "blue"
   },
   {
     type: 'testimonial',
-    quote: "The web application handles 50K+ daily users seamlessly. Performance is incredible and our conversion rates increased by 180% within months.",
+    quote: "Working with Nemvol felt like having an in-house CTO. They didn't just write code; they challenged our assumptions and helped us secure our Seed round.",
     author: "Marcus Rodriguez",
-    role: "CTO",
+    role: "Founder",
     company: "ShopStream",
-    metric: "180%",
-    label: "Growth",
+    metric: "90%",
+    label: "Success Rate",
     color: "indigo"
   },
   {
     type: 'testimonial',
-    quote: "They delivered our patient portal on time and under budget. The HIPAA-compliant solution serves 25K+ patients with 99.9% uptime.",
-    author: "Dr. Emily Watson",
-    role: "CMO",
-    company: "HealthTech Pro",
-    metric: "99.9%",
-    label: "Uptime",
+    quote: "The White-label partnership with Nemvol allowed our agency to take on complex technical builds without expanding our full-time headcount.",
+    author: "Emily Watson",
+    role: "Agency Director",
+    company: "Creative Pulse",
+    metric: "5x",
+    label: "Capacity",
     color: "blue"
   },
   {
     type: 'testimonial',
-    quote: "The scalability of our platform was their priority from day one. We've scaled to 5 countries with zero infrastructure bottlenecks.",
+    quote: "Their local market UX expertise combined with global engineering standards made our launch in the African market seamless and successful.",
     author: "James Wilson",
-    role: "Founder",
+    role: "Growth Lead",
     company: "LogiTrack",
-    metric: "5x",
-    label: "Scale",
+    metric: "3x",
+    label: "User Growth",
     color: "blue"
   },
   {
     type: 'cta',
     title: "Your story starts here.",
-    subtitle: "Ready to build something iconic?",
-    buttonText: "Start a Project"
+    subtitle: "Ready to launch your vision?",
+    buttonText: "Book Discovery Sprint"
   }
 ]
 
@@ -212,7 +212,7 @@ const ClientSuccessStories = () => {
       {/* Background Section Title (Static during scroll) */}
       <div className="sticky top-0 h-screen overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center opacity-[0.03] select-none uppercase font-black text-[20vw] whitespace-nowrap leading-none tracking-tighter">
-          Nemvol Impact
+          Founder Success
         </div>
       </div>
 

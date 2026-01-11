@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Calendar, Clock, User, Tag } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Calendar, Clock, User, ArrowRight } from 'lucide-react'
 import Section from '../ui/Section'
-import Card from '../ui/Card'
 import Button from '../ui/Button'
 import LoadingSkeleton from '../ui/LoadingSkeleton'
 import { blogPosts } from '../../data/blogPosts'
@@ -9,84 +9,136 @@ import { blogPosts } from '../../data/blogPosts'
 const BlogGrid = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [loading, setLoading] = useState(true)
-  
-  const categories = ['All', 'Development', 'Design', 'Strategy']
-  
-  const filteredPosts = selectedCategory === 'All' 
-    ? blogPosts 
+
+  const categories = ['All', 'MVP Strategy', 'Product', 'Founder Tips', 'Growth Strategy']
+
+  const filteredPosts = selectedCategory === 'All'
+    ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory)
 
   useEffect(() => {
     // Simulate loading
-    const timer = setTimeout(() => setLoading(false), 1000)
+    const timer = setTimeout(() => setLoading(false), 800)
     return () => clearTimeout(timer)
   }, [])
 
   return (
-    <Section>
-      <div className="mb-12">
-        <div className="flex flex-wrap gap-4 justify-center">
+    <Section className="py-20 bg-gray-50/50">
+      {/* Category Filter */}
+      <div className="mb-16">
+        <div className="flex flex-wrap gap-3 justify-center">
           {categories.map(category => (
-            <Button
+            <button
               key={category}
-              variant={selectedCategory === category ? 'default' : 'outline'}
               onClick={() => setSelectedCategory(category)}
-              className="px-6"
+              className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${selectedCategory === category
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
+                  : 'bg-white text-gray-500 hover:bg-blue-50 hover:text-blue-600 border border-gray-100'
+                }`}
             >
               {category}
-            </Button>
+            </button>
           ))}
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {loading ? (
-          Array.from({ length: 6 }).map((_, i) => (
-            <LoadingSkeleton.Card key={i} />
-          ))
-        ) : (
-          filteredPosts.map(post => (
-          <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
-              <div className="text-blue-600 text-6xl font-bold opacity-20">
-                {post.category.charAt(0)}
-              </div>
-            </div>
-            
-            <div className="p-6">
-              <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  {new Date(post.date).toLocaleDateString()}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  {post.readTime}
-                </span>
-              </div>
-              
-              <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                {post.title}
-              </h3>
-              
-              <p className="text-gray-600 mb-4 line-clamp-3">
-                {post.excerpt}
-              </p>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <User className="w-4 h-4" />
-                  {post.author}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <AnimatePresence mode="popLayout">
+          {loading ? (
+            Array.from({ length: 6 }).map((_, i) => (
+              <motion.div
+                key={`skeleton-${i}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <LoadingSkeleton.Card />
+              </motion.div>
+            ))
+          ) : (
+            filteredPosts.map((post, index) => (
+              <motion.div
+                key={post.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl hover:border-blue-100 transition-all duration-500"
+              >
+                {/* Image Placeholder/Visual */}
+                <div className="h-56 relative overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-blue-600 text-[10px] font-black uppercase tracking-widest rounded-full shadow-sm">
+                      {post.category}
+                    </span>
+                  </div>
                 </div>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">
-                  {post.category}
-                </span>
-              </div>
-            </div>
-          </Card>
-          ))
-        )}
+
+                <div className="p-8">
+                  {/* Meta */}
+                  <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar size={14} className="text-blue-600" />
+                      {new Date(post.date).toLocaleDateString()}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Clock size={14} className="text-blue-600" />
+                      {post.readTime}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight">
+                    {post.title}
+                  </h3>
+
+                  {/* Excerpt */}
+                  <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed text-sm font-medium">
+                    {post.excerpt}
+                  </p>
+
+                  {/* Footer */}
+                  <div className="flex items-center justify-between pt-6 border-t border-gray-50">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-xs font-bold border border-blue-100">
+                        {post.author.charAt(0)}
+                      </div>
+                      <span className="text-xs font-bold text-gray-900">{post.author}</span>
+                    </div>
+                    <button className="text-blue-600 hover:gap-3 flex items-center gap-2 transition-all duration-300 font-bold text-sm">
+                      Read More <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))
+          )}
+        </AnimatePresence>
       </div>
+
+      {/* Empty State */}
+      {!loading && filteredPosts.length === 0 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center py-20"
+        >
+          <div className="text-gray-400 mb-4">No insights found in this category yet.</div>
+          <button
+            onClick={() => setSelectedCategory('All')}
+            className="text-blue-600 font-bold hover:underline"
+          >
+            Show all posts
+          </button>
+        </motion.div>
+      )}
     </Section>
   )
 }

@@ -30,8 +30,8 @@ const ExcellenceMetrics = () => {
               transition={{ duration: 0.8 }}
               className="text-6xl md:text-8xl font-bold text-gray-900 leading-[0.9] tracking-tight"
             >
-              Driven by <br />
-              <span className="text-blue-600 italic">Robust Metrics.</span>
+              Bridging the Gap to<br />
+              <span className="text-blue-600 italic">Validated Success.</span>
             </motion.h2>
           </div>
 
@@ -42,8 +42,8 @@ const ExcellenceMetrics = () => {
             transition={{ delay: 0.2 }}
             className="lg:pt-20"
           >
-            <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed">
-              We don't just build features; we engineer business growth. Our systems are designed for high-stakes environments where precision and scale are non-negotiable.
+            <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed font-medium">
+              Nemvol is the sweet spot between freelancer chaos and large agency overheads. We eliminate feature bloat and delivery delays to focus on what matters: your traction.
             </p>
           </motion.div>
         </div>
@@ -51,33 +51,37 @@ const ExcellenceMetrics = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              metric: "50+",
-              label: "Products Launched",
-              description: "Proven track record across Fintech, Healthcare, and Logistics.",
+              metric: "8-12 Wks",
+              label: "Get to Market Fast",
+              description: "We build your MVP quickly so you can start testing your idea with real users sooner.",
               icon: Users,
               highlight: false
             },
             {
-              metric: "Elastic",
-              label: "Scalability",
-              description: "Infrastructure designed to grow from MVP to millions of users.",
+              metric: "90%",
+              label: "Proven Success Rate",
+              description: "Most of our discovery phases lead directly to successful, high-growth product launches.",
               icon: Award,
               highlight: true
             },
             {
               metric: "100%",
-              label: "Retention",
-              description: "We act as your dedicated engineering partner, ensuring long-term success.",
+              label: "You Own Everything",
+              description: "Your code, your assets, your IP. We provide full transparency and total ownership transfer.",
               icon: Star,
               highlight: false
             }
           ].map((item, index) => (
             <motion.div
               key={item.label}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.15,
+                ease: [0.25, 0.4, 0.25, 1]
+              }}
               className={`relative p-10 rounded-[2.5rem] border ${item.highlight
                 ? 'bg-blue-600 border-blue-600 text-white shadow-2xl shadow-blue-200'
                 : 'bg-white border-gray-100 shadow-xl shadow-gray-100'
