@@ -4,7 +4,7 @@ import ContactInfo from '../components/contact/ContactInfo'
 const Contact = () => {
   return (
     <>
-      <div className="pt-16 md:pt-20">
+      <div className="">
         <ContactForm />
       </div>
       <ContactInfo />

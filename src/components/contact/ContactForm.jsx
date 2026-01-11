@@ -40,8 +40,8 @@ const ContactForm = () => {
   }
 
   return (
-    <Section background="none" className="py-20 bg-gray-50/30">
-      <div className="max-w-7xl mx-auto px-6">
+    <Section background="none" className="py-4 bg-gray-50/30">
+      <div className=" mx-auto px-2 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
           {/* Form Side */}
