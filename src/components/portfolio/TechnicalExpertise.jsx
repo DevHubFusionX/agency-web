@@ -71,7 +71,7 @@ const TechnicalExpertise = () => {
             transition={{ delay: 0.2 }}
             className="lg:pt-20"
           >
-            <p className="text-xl md:text-2xl text-blue-50 max-w-xl leading-relaxed mb-8 font-medium">
+            <p className="text-lg md:text-2xl text-blue-50 max-w-xl leading-relaxed mb-8 font-medium">
               More structured than freelancers. Faster and more founder-friendly than big agencies. The sweet spot for MVPs.
             </p>
             <Link to="/contact">
@@ -84,7 +84,7 @@ const TechnicalExpertise = () => {
         </div>
 
         {/* Differentiators Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {differentiators.map((item, index) => (
             <motion.div
               key={item.title}
@@ -93,20 +93,20 @@ const TechnicalExpertise = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -4 }}
-              className="bg-white/5 backdrop-blur-sm rounded-[2rem] p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+              className="bg-white/5 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 group"
             >
-              <div className="flex items-start gap-6">
-                <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
-                  <item.icon size={28} className="text-white" />
+              <div className="flex flex-col sm:flex-row items-start gap-4 md:gap-6">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-white/10 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                  <item.icon size={24} className="text-white md:w-[28px] md:h-[28px]" />
                 </div>
                 <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                    <span className="px-2 py-0.5 bg-white/10 rounded-full text-xs font-bold text-blue-100 uppercase tracking-wider">
+                  <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2">
+                    <h3 className="text-lg md:text-xl font-bold text-white">{item.title}</h3>
+                    <span className="px-2 py-0.5 bg-white/10 rounded-full text-[10px] md:text-xs font-bold text-blue-100 uppercase tracking-wider">
                       {item.highlight}
                     </span>
                   </div>
-                  <p className="text-blue-50 leading-relaxed font-medium">
+                  <p className="text-sm md:text-base text-blue-50 leading-relaxed font-medium">
                     {item.description}
                   </p>
                 </div>

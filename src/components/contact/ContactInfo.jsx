@@ -12,41 +12,41 @@ const ContactInfo = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-[2rem] p-10 shadow-xl shadow-blue-500/5 border border-gray-100 flex flex-col h-full"
+            className="bg-white rounded-[1.5rem] md:rounded-[2rem] p-8 md:p-10 shadow-xl shadow-blue-500/5 border border-gray-100 flex flex-col h-full"
           >
             <h3 className="text-xl font-bold text-gray-900 mb-8 px-1">Channels</h3>
 
             <div className="space-y-8 flex-grow">
               <div className="flex items-start group">
-                <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mr-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                  <Mail size={22} className="text-blue-600 group-hover:text-white" />
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-50 rounded-xl md:rounded-2xl flex items-center justify-center mr-4 md:mr-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 flex-shrink-0">
+                  <Mail size={20} className="text-blue-600 group-hover:text-white md:w-[22px] md:h-[22px]" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Direct Email</h4>
-                  <p className="text-gray-900 font-bold text-lg mb-1">hello@nemvol.com</p>
-                  <p className="text-sm text-gray-500 font-medium italic">Response in &lt; 4 hours</p>
+                  <h4 className="text-[10px] md:text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Direct Email</h4>
+                  <p className="text-gray-900 font-bold text-base md:text-lg mb-0.5 md:mb-1">hello@nemvol.com</p>
+                  <p className="text-xs md:text-sm text-gray-500 font-medium italic">Response in &lt; 4 hours</p>
                 </div>
               </div>
 
               <div className="flex items-start group">
-                <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mr-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                  <Linkedin size={22} className="text-blue-600 group-hover:text-white" />
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-50 rounded-xl md:rounded-2xl flex items-center justify-center mr-4 md:mr-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 flex-shrink-0">
+                  <Linkedin size={20} className="text-blue-600 group-hover:text-white md:w-[22px] md:h-[22px]" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">LinkedIn</h4>
-                  <p className="text-gray-900 font-bold text-lg mb-1">Nemvol Studio</p>
-                  <p className="text-sm text-gray-500 font-medium">Daily product strategy tips</p>
+                  <h4 className="text-[10px] md:text-xs font-black uppercase tracking-widest text-gray-400 mb-1">LinkedIn</h4>
+                  <p className="text-gray-900 font-bold text-base md:text-lg mb-0.5 md:mb-1">Nemvol Studio</p>
+                  <p className="text-xs md:text-sm text-gray-500 font-medium">Daily product strategy tips</p>
                 </div>
               </div>
 
               <div className="flex items-start group">
-                <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mr-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                  <MapPin size={22} className="text-blue-600 group-hover:text-white" />
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-50 rounded-xl md:rounded-2xl flex items-center justify-center mr-4 md:mr-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 flex-shrink-0">
+                  <MapPin size={20} className="text-blue-600 group-hover:text-white md:w-[22px] md:h-[22px]" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">HQ Location</h4>
-                  <p className="text-gray-900 font-bold text-lg mb-1">Lagos, Nigeria</p>
-                  <p className="text-sm text-gray-500 font-medium">Pan-African Operations</p>
+                  <h4 className="text-[10px] md:text-xs font-black uppercase tracking-widest text-gray-400 mb-1">HQ Location</h4>
+                  <p className="text-gray-900 font-bold text-base md:text-lg mb-0.5 md:mb-1">Lagos, Nigeria</p>
+                  <p className="text-xs md:text-sm text-gray-500 font-medium">Pan-African Operations</p>
                 </div>
               </div>
             </div>

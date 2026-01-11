@@ -27,9 +27,9 @@ const ContactHero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-8"
+            className="text-4xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6 md:mb-8"
           >
-            Turn Your Idea Into a <br />
+            Turn Your Idea Into a <br className="hidden md:block" />
             <span className="text-blue-600 italic">Validated Product.</span>
           </motion.h1>
 
@@ -38,7 +38,7 @@ const ContactHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-2xl text-gray-500 max-w-3xl leading-relaxed mb-6 font-medium"
+            className="text-base md:text-2xl text-gray-500 max-w-3xl leading-relaxed mb-6 md:mb-8 font-medium"
           >
             Book your free 30-minute discovery call today. We'll discuss your vision, audit your requirements, and map out a strategic path to MVP.
           </motion.p>
@@ -47,7 +47,7 @@ const ContactHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center gap-6 text-sm font-bold text-gray-400 uppercase tracking-widest mt-4"
+            className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-[10px] md:text-sm font-bold text-gray-400 uppercase tracking-widest mt-4"
           >
             <span className="flex items-center gap-2">
               <div className="w-1 h-1 rounded-full bg-blue-600" />

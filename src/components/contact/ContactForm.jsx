@@ -50,7 +50,7 @@ const ContactForm = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-blue-500/5 border border-gray-100"
+              className="bg-white rounded-[1rem] md:rounded-[2.5rem] p-4 md:p-12 shadow-2xl shadow-blue-500/5 border border-gray-100"
             >
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Let's Build Your <span className="text-blue-600">MVP.</span>
@@ -112,18 +112,18 @@ const ContactForm = () => {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold text-gray-900 placeholder:text-gray-300 resize-none"
+                    className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold text-gray-900 placeholder:text-gray-300 resize-none text-sm md:text-base"
                     placeholder="Tell us about your idea and what you hope to achieve..."
                   />
                 </div>
 
                 <div className="pt-4">
-                  <Button type="submit" size="lg" className="w-full h-16 rounded-2xl text-lg font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 group" disabled={isSubmitting}>
+                  <Button type="submit" size="lg" className="w-full h-14 md:h-16 rounded-2xl text-base md:text-lg font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 group" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <LoadingSpinner size="sm" />
                     ) : (
                       <span className="flex items-center gap-3">
-                        Book My Free Consultation
+                        Book Consultation
                         <Calendar size={20} className="group-hover:rotate-12 transition-transform" />
                       </span>
                     )}
@@ -156,8 +156,8 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <h3 className="text-xs font-black uppercase tracking-[0.2em] text-blue-600 mb-8 px-1">Consultation Roadmap</h3>
-                <div className="space-y-8">
+                <h3 className="text-xs font-black uppercase tracking-[0.2em] text-blue-600 mb-6 md:mb-8 px-1 text-center lg:text-left">Consultation Roadmap</h3>
+                <div className="space-y-6 md:space-y-8">
                   {[
                     {
                       icon: Sparkles,
@@ -180,9 +180,9 @@ const ContactForm = () => {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 + (i * 0.1) }}
-                      className="flex gap-6 group"
+                      className="flex flex-col sm:flex-row gap-4 sm:gap-6 group items-center sm:items-start text-center sm:text-left"
                     >
-                      <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 shadow-sm flex items-center justify-center flex-shrink-0 group-hover:border-blue-200 group-hover:bg-blue-50 transition-all duration-300">
+                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white border border-gray-100 shadow-sm flex items-center justify-center flex-shrink-0 group-hover:border-blue-200 group-hover:bg-blue-50 transition-all duration-300">
                         <step.icon className="text-blue-600" size={24} />
                       </div>
                       <div>

@@ -1,12 +1,12 @@
-import ContactHero from '../components/contact/ContactHero'
 import ContactForm from '../components/contact/ContactForm'
 import ContactInfo from '../components/contact/ContactInfo'
 
 const Contact = () => {
   return (
     <>
-      <ContactHero />
-      <ContactForm />
+      <div className="pt-24 md:pt-32">
+        <ContactForm />
+      </div>
       <ContactInfo />
     </>
   )

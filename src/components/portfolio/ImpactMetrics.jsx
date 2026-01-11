@@ -93,14 +93,14 @@ const ImpactMetrics = () => {
             transition={{ delay: 0.2 }}
             className="lg:pt-20"
           >
-            <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-gray-500 max-w-xl leading-relaxed">
               We measure success by the success of our clients. Here's what our track record looks like.
             </p>
           </motion.div>
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {metrics.map((item, index) => {
             const offsets = ['md:mt-0', 'md:mt-12', 'md:mt-6', 'md:mt-20']
 
@@ -113,24 +113,24 @@ const ImpactMetrics = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`group ${offsets[index]}`}
               >
-                <div className="bg-gray-50 rounded-[2rem] p-8 border border-gray-100 hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all duration-500 hover:-translate-y-2">
+                <div className="bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-100 hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all duration-500 hover:-translate-y-2">
                   {/* SVG Icon */}
-                  <div className="w-16 h-16 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 md:w-16 md:h-16 text-blue-600 mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
                     {item.svg}
                   </div>
 
                   {/* Metric */}
-                  <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">
+                  <div className="text-3xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">
                     {item.metric}
                   </div>
 
                   {/* Label */}
-                  <div className="text-base font-bold text-gray-800 mb-1">
+                  <div className="text-sm md:text-base font-bold text-gray-800 mb-1">
                     {item.label}
                   </div>
 
                   {/* Description */}
-                  <div className="text-sm text-gray-600 font-medium">
+                  <div className="text-xs md:text-sm text-gray-600 font-medium">
                     {item.description}
                   </div>
                 </div>

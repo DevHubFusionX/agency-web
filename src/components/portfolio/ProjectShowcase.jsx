@@ -125,9 +125,9 @@ const ProjectCard = ({ project, index, featured = false }) => {
         </div>
 
         {/* Content Side - Before/After Split */}
-        <div className="p-6 md:p-8">
+        <div className="p-5 md:p-8">
           {/* Description */}
-          <p className="text-gray-600 leading-relaxed mb-6">
+          <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-6">
             {project.description}
           </p>
 
@@ -241,7 +241,7 @@ const ProjectShowcase = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-[0.95] tracking-tight"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-[0.95] tracking-tight mb-2"
             >
               Before → After <br />
               <span className="text-blue-600 italic">Transformations.</span>
@@ -254,7 +254,7 @@ const ProjectShowcase = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-xl md:text-2xl text-gray-500 leading-relaxed">
+            <p className="text-lg md:text-2xl text-gray-500 leading-relaxed">
               Real products we've built for founders and startups. Each one launched on time,
               on budget, and validated by real users.
             </p>

@@ -27,7 +27,7 @@ const PortfolioHero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-8"
+            className="text-4xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6 md:mb-8"
           >
             MVPs That Reached <br />
             <span className="text-blue-600 italic">Product-Market Fit.</span>
@@ -38,7 +38,7 @@ const PortfolioHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-2xl text-gray-600 max-w-2xl leading-relaxed mb-12 font-medium"
+            className="text-base md:text-2xl text-gray-600 max-w-2xl leading-relaxed mb-8 md:mb-12 font-medium"
           >
             From concept to funded startup. Here's how we've helped founders validate ideas, raise capital, and scale their products.
           </motion.p>
@@ -48,12 +48,12 @@ const PortfolioHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap gap-3 mb-16"
+            className="flex flex-wrap gap-2 md:gap-3 mb-12 md:mb-16"
           >
             {['All Projects', 'Startups', 'Agencies', 'SMEs'].map((filter, i) => (
               <button
                 key={filter}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${i === 0
+                className={`px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${i === 0
                   ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
                   : 'bg-gray-50 text-gray-600 hover:bg-blue-50 hover:text-blue-600'
                   }`}
@@ -64,7 +64,7 @@ const PortfolioHero = () => {
           </motion.div>
 
           {/* Metrics Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-8 w-full border-t border-gray-100 pt-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 md:gap-x-12 gap-y-6 md:gap-y-8 w-full border-t border-gray-100 pt-8 md:pt-12">
             {[
               { label: 'MVPs Shipped', value: '50+' },
               { label: 'Avg Delivery', value: '10 Wks' },
@@ -82,8 +82,8 @@ const PortfolioHero = () => {
                   ease: [0.25, 0.4, 0.25, 1]
                 }}
               >
-                <div className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">{stat.value}</div>
-                <div className="text-xs uppercase font-bold text-gray-400 tracking-wider">{stat.label}</div>
+                <div className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">{stat.value}</div>
+                <div className="text-[10px] md:text-xs uppercase font-bold text-gray-400 tracking-wider font-montserrat">{stat.label}</div>
               </motion.div>
             ))}
           </div>
