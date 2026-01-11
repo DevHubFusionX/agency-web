@@ -1,23 +1,42 @@
+import { Suspense, lazy } from 'react'
 import SEO from '../../components/SEO'
 import { seoData } from '../../utils/seoData'
 import PageTransition from '../../components/ui/PageTransition'
 import AboutHero from '../../components/about/AboutHero'
-import FounderVision from '../../components/about/FounderVision'
-import CompanyStory from '../../components/about/CompanyStory'
-import CoreValues from '../../components/about/CoreValues'
-import LeadershipTeam from '../../components/about/LeadershipTeam'
-import StrategicEngagement from '../../components/StrategicEngagement'
+import SectionSkeleton from '../../components/ui/SectionSkeleton'
+
+// Lazy Load Components
+const FounderVision = lazy(() => import('../../components/about/FounderVision'))
+const CompanyStory = lazy(() => import('../../components/about/CompanyStory'))
+const CoreValues = lazy(() => import('../../components/about/CoreValues'))
+const LeadershipTeam = lazy(() => import('../../components/about/LeadershipTeam'))
+const StrategicEngagement = lazy(() => import('../../components/StrategicEngagement'))
 
 const About = () => {
   return (
     <PageTransition>
       <SEO {...seoData.about} />
       <AboutHero />
-      <FounderVision />
-      <CompanyStory />
-      <CoreValues />
-      <LeadershipTeam />
-      <StrategicEngagement />
+
+      <Suspense fallback={<SectionSkeleton />}>
+        <FounderVision />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton />}>
+        <CompanyStory />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton />}>
+        <CoreValues />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton />}>
+        <LeadershipTeam />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton />}>
+        <StrategicEngagement />
+      </Suspense>
     </PageTransition>
   )
 }
