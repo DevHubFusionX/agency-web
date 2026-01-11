@@ -9,7 +9,6 @@ const Contact = () => {
   return (
     <PageTransition>
       <SEO {...seoData.contact} />
-      <ContactHero />
       <ContactForm />
       <ContactInfo />
     </PageTransition>
