@@ -155,44 +155,7 @@ const ContactForm = () => {
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-xs font-black uppercase tracking-[0.2em] text-blue-600 mb-6 md:mb-8 px-1 text-center lg:text-left">Consultation Roadmap</h3>
-                <div className="space-y-6 md:space-y-8">
-                  {[
-                    {
-                      icon: Sparkles,
-                      title: 'Requirement Audit',
-                      desc: 'We analyze your idea and identify the core MVP features.'
-                    },
-                    {
-                      icon: ShieldCheck,
-                      title: 'Strategic Roadmap',
-                      desc: 'Get a clear timeline and milestone breakdown for launch.'
-                    },
-                    {
-                      icon: ArrowRight,
-                      title: 'Investment Guide',
-                      desc: 'A transparent breakdown of costs and resource allocation.'
-                    }
-                  ].map((step, i) => (
-                    <motion.div
-                      key={step.title}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 + (i * 0.1) }}
-                      className="flex flex-col sm:flex-row gap-4 sm:gap-6 group items-center sm:items-start text-center sm:text-left"
-                    >
-                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white border border-gray-100 shadow-sm flex items-center justify-center flex-shrink-0 group-hover:border-blue-200 group-hover:bg-blue-50 transition-all duration-300">
-                        <step.icon className="text-blue-600" size={24} />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-1">{step.title}</h4>
-                        <p className="text-sm text-gray-500 font-medium leading-relaxed">{step.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+
 
             </div>
           </div>
