@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import ErrorBoundary from './components/ui/ErrorBoundary'
 import LoadingScreen from './components/ui/LoadingScreen'
+import ScrollToTop from './components/common/ScrollToTop'
 import AppRoutes from './AppRoutes'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <ErrorBoundary>
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       <Router>
+        <ScrollToTop />
         <Layout>
           <AppRoutes />
         </Layout>

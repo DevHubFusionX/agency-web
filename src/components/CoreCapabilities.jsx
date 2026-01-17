@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Code, Layout, Smartphone, Database } from 'lucide-react'
+import { ArrowUpRight, Rocket, Palette, Code2, Settings, ShoppingBag } from 'lucide-react'
 import Section from './ui/Section'
 
 const BentoCard = ({ title, description, icon: Icon, capabilities, className, delay, highlight }) => {
@@ -104,10 +104,10 @@ const CoreCapabilities = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1: Large (2 cols) - Highlighted */}
           <BentoCard
-            title="Build Your MVP"
-            description="We build your functional web or mobile product in 8-12 weeks, ready for users and investors."
-            icon={Code}
-            capabilities={['8-12 Weeks', 'Full-stack', 'Cloud-native', 'Scalable']}
+            title="MVP Development"
+            description="We build your functional web or mobile product to test your idea with real users."
+            icon={Rocket}
+            capabilities={['Functional MVP', 'Codebase', 'Deployment Setup', 'Fast-track']}
             className="md:col-span-2 min-h-[400px]"
             delay={0}
             highlight={true}
@@ -115,32 +115,42 @@ const CoreCapabilities = () => {
 
           {/* Card 2: Small (1 col) */}
           <BentoCard
-            title="Validate Your Idea"
-            description="We help you define your scope and create an investor-ready brief in just 2 weeks."
-            icon={Database}
-            capabilities={['2-Week Sprint', 'User Research', 'Wireframing', 'Roadmapping']}
+            title="UI/UX Design"
+            description="We design intuitive and engaging user experiences for startups and product teams."
+            icon={Palette}
+            capabilities={['Wireframes', 'Prototypes', 'High-fidelity', 'User-centric']}
             className="md:col-span-1 min-h-[400px]"
             delay={0.1}
           />
 
           {/* Card 3: Small (1 col) */}
           <BentoCard
-            title="Scale Your Impact"
-            description="We stay with you to iterate based on real data and prioritize the features your users actually want."
-            icon={Smartphone}
-            capabilities={['30-90 Days', 'Analytics', 'CRO', 'Feature Tuning']}
+            title="Full Product Development"
+            description="Bespoke engineering from concept to launch for businesses and enterprises."
+            icon={Code2}
+            capabilities={['Complete Product', 'Testing', 'Launch Support', 'Scale']}
             className="md:col-span-1 min-h-[400px]"
             delay={0.2}
           />
 
-          {/* Card 4: Large (2 cols) */}
+          {/* Card 4: Small (1 col) */}
           <BentoCard
-            title="White-label Support"
-            description="Dedicated engineering teams for agencies. We act as your technical engine with guaranteed delivery."
-            icon={Layout}
-            capabilities={['Dedicated Team', 'NDA Protected', 'Milestone-based', 'High SLA']}
-            className="md:col-span-2 min-h-[400px]"
+            title="Support & Maintenance"
+            description="Ongoing updates and bug fixes to keep your product running smoothly."
+            icon={Settings}
+            capabilities={['Regular Updates', 'Bug Fixes', 'Ongoing Support', 'SLAs']}
+            className="md:col-span-1 min-h-[400px]"
             delay={0.3}
+          />
+
+          {/* Card 5: Small (1 col) */}
+          <BentoCard
+            title="Software Resale"
+            description="Customized software setup and training for businesses and entrepreneurs."
+            icon={ShoppingBag}
+            capabilities={['Custom Setup', 'Training', 'Resale Support', 'Integration']}
+            className="md:col-span-1 min-h-[400px]"
+            delay={0.4}
           />
         </div>
       </div>

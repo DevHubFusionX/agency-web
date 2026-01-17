@@ -1,40 +1,48 @@
 import { motion } from 'framer-motion'
-import { Lightbulb, Rocket, TrendingUp, Users, ArrowRight, Clock, CheckCircle } from 'lucide-react'
+import { Palette, Rocket, Code2, Settings, ShoppingBag, ArrowRight, CheckCircle, Users } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Button from '../ui/Button'
 import Section from '../ui/Section'
 
 const productizedServices = [
   {
-    icon: Lightbulb,
-    title: 'Discovery Sprint',
-    duration: '2 Weeks',
-    description: 'Validate your idea before investing in development. We help you define scope, create wireframes, and build an investor-ready brief.',
-    deliverables: ['User Research', 'Wireframes', 'MVP Scope', 'Investor Brief'],
+    icon: Palette,
+    title: 'UI/UX Design',
+    targetCustomers: 'Startups, product teams, businesses',
+    solutionOutline: "We'll design an intuitive and engaging user experience for your product.",
+    deliverables: ['Wireframes', 'Prototypes', 'High-fidelity designs'],
     highlight: false
   },
   {
     icon: Rocket,
-    title: 'MVP Express',
-    duration: '8-12 Weeks',
-    description: 'A functional web or mobile product with analytics, testing, and deployment—built for users and investors.',
-    deliverables: ['Full-stack Build', 'Analytics', 'Testing', 'Deployment'],
+    title: 'MVP Development',
+    targetCustomers: 'Startups, entrepreneurs',
+    solutionOutline: "We'll build a Minimum Viable Product to test your idea with real users.",
+    deliverables: ['Functional MVP', 'Codebase', 'Deployment setup'],
     highlight: true
   },
   {
-    icon: TrendingUp,
-    title: 'Launch & Grow',
-    duration: '30-90 Days',
-    description: 'Post-launch iteration powered by real user data. We help you prioritize features, run experiments, and optimize.',
-    deliverables: ['CRO Experiments', 'Analytics', 'Feature Tuning', 'Roadmap'],
+    icon: Code2,
+    title: 'Full Product Development- Bespoke',
+    targetCustomers: 'Businesses, enterprises',
+    solutionOutline: "We'll develop your product from concept to launch.",
+    deliverables: ['Complete product', 'Testing', 'Launch support'],
     highlight: false
   },
   {
-    icon: Users,
-    title: 'White-label Development',
-    duration: 'Ongoing',
-    description: 'Dedicated development teams for agencies. We work under NDA as your technical engine with guaranteed SLAs.',
-    deliverables: ['Dedicated Team', 'NDA Protected', 'Milestone-based', 'High SLA'],
+    icon: Settings,
+    title: 'Ongoing Support & Maintenance',
+    targetCustomers: 'Businesses, product owners',
+    solutionOutline: "We'll keep your product updated and running smoothly.",
+    deliverables: ['Regular updates', 'Bug fixes', 'Support'],
+    highlight: false
+  },
+  {
+    icon: ShoppingBag,
+    title: 'Software Resale',
+    targetCustomers: 'Businesses, entrepreneurs',
+    solutionOutline: "We'll resell and customize existing software products for you.",
+    deliverables: ['Customized software', 'Setup', 'Training'],
     highlight: false
   }
 ]
@@ -103,8 +111,8 @@ const ServiceOfferings = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -8 }}
               className={`relative overflow-hidden rounded-[2.5rem] p-10 border transition-all duration-500 group ${service.highlight
-                  ? 'bg-blue-600 border-blue-600 text-white shadow-2xl shadow-blue-200'
-                  : 'bg-white border-gray-100 shadow-xl shadow-gray-100/50 hover:shadow-2xl hover:border-blue-100'
+                ? 'bg-blue-600 border-blue-600 text-white shadow-2xl shadow-blue-200'
+                : 'bg-white border-gray-100 shadow-xl shadow-gray-100/50 hover:shadow-2xl hover:border-blue-100'
                 }`}
             >
               {/* Header */}
@@ -115,8 +123,8 @@ const ServiceOfferings = () => {
                 </div>
                 <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${service.highlight ? 'bg-white/20 text-white' : 'bg-blue-50 text-blue-600'
                   }`}>
-                  <Clock size={14} />
-                  {service.duration}
+                  <Users size={14} />
+                  {service.targetCustomers}
                 </div>
               </div>
 
@@ -125,7 +133,7 @@ const ServiceOfferings = () => {
                 {service.title}
               </h3>
               <p className={`text-lg mb-8 leading-relaxed ${service.highlight ? 'text-blue-50' : 'text-gray-500'}`}>
-                {service.description}
+                {service.solutionOutline}
               </p>
 
               {/* Deliverables */}
