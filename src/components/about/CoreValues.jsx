@@ -5,27 +5,27 @@ import Section from '../ui/Section'
 
 const values = [
   {
-    icon: Target,
-    title: 'Engineering Excellence',
-    description: 'We optimize every line of code for speed, efficiency, and maintainability. Fast loading times and smooth interactions are non-negotiable.',
+    icon: Heart,
+    title: 'User-Obsessed',
+    description: 'We don’t just build software; we build solutions for real people. Every pixel and line of code is crafted with the end-user in mind.',
     color: 'blue'
   },
   {
-    icon: Lightbulb,
-    title: 'Future-Proof Architecture',
-    description: 'We build with tomorrow in mind. Modular, scalable systems that evolve with your business without costly rewrites.',
+    icon: Target,
+    title: 'Move Fast, Break Nothing',
+    description: 'We believe in speed, but not at the cost of quality. We ship fast, iterate faster, and ensure stability at every step.',
     color: 'purple'
   },
   {
-    icon: Heart,
-    title: 'Radical User Focus',
-    description: 'Every interface we create is intuitive and accessible. We test with real users to ensure experiences that delight.',
+    icon: Eye,
+    title: 'Radical Transparency',
+    description: 'No hidden costs, no technical jargon black holes. You see what we see. We build in public with you.',
     color: 'green'
   },
   {
-    icon: Eye,
-    title: 'Transparent Processes',
-    description: 'No black boxes. You see our work in progress, understand our decisions, and are always part of the conversation.',
+    icon: Lightbulb,
+    title: 'Ownership',
+    description: 'We act like founders. We treat your product, your budget, and your timeline as if they were our own.',
     color: 'orange'
   }
 ]

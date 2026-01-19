@@ -54,6 +54,10 @@ const BentoCard = ({ title, description, icon: Icon, capabilities, className, de
   )
 }
 
+import WaveBackground from './ui/WaveBackground'
+
+// ... existing BentoCard component ...
+
 const CoreCapabilities = () => {
   return (
     <Section className="py-24 md:py-32 relative overflow-hidden bg-white">
@@ -154,6 +158,8 @@ const CoreCapabilities = () => {
           />
         </div>
       </div>
+
+      <WaveBackground position="bottom" variant="light" />
     </Section>
   )
 }

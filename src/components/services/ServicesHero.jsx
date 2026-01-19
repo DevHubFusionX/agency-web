@@ -40,7 +40,7 @@ const ServicesHero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-2xl text-gray-500 max-w-2xl leading-relaxed mb-12 font-medium"
           >
-            We partner with founders, startups, and agencies to transform ideas into validated, scalable digital products. Discovery-first. Outcome-driven. Built for growth.
+            We design, build, and prove your digital product in 8–12 weeks — and stay to turn traction into revenue.
           </motion.p>
 
           {/* Value Props Strip */}
@@ -68,9 +68,9 @@ const ServicesHero = () => {
           {/* Metrics Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-8 w-full border-t border-gray-100 pt-12">
             {[
-              { label: 'Avg Delivery', value: '10 Wks' },
-              { label: 'MVPs Shipped', value: '50+' },
-              { label: 'Client Retention', value: '90%' },
+              { label: 'Avg Delivery', value: '8-12 Wks' },
+              { label: 'Process', value: 'Agile' },
+              { label: 'Growth Support', value: '90 Days' },
               { label: 'IP Ownership', value: '100%' }
             ].map((stat, i) => (
               <motion.div

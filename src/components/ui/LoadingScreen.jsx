@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import LoadingLogo from './LoadingLogo'
 
 const LoadingScreen = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true)
@@ -8,7 +9,7 @@ const LoadingScreen = ({ onComplete }) => {
     const timer = setTimeout(() => {
       setIsVisible(false)
       setTimeout(onComplete, 800)
-    }, 2000)
+    }, 3500) // Slightly longer to allow animation to play
 
     return () => clearTimeout(timer)
   }, [onComplete])
@@ -28,36 +29,23 @@ const LoadingScreen = ({ onComplete }) => {
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
             style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
 
-          <div className="relative text-center w-full max-w-sm px-6">
-            {/* Brand Name */}
+          <div className="relative flex flex-col items-center justify-center w-full max-w-sm px-6">
+            {/* Animated Logo */}
+            <div>
+              <LoadingLogo />
+            </div>
+
+            {/* Brand Name - Subtle Fade In after logo starts */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-5xl md:text-6xl font-black text-white tracking-tighter uppercase mb-2"
+              transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
+              className="text-4xl font-black text-white tracking-tighter uppercase mb-2"
             >
               NEMVOL
             </motion.h1>
 
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-white/60 text-xs font-bold tracking-[0.4em] uppercase mb-12"
-            >
-              Engineered for Impact
-            </motion.p>
 
-            {/* Progress Bar */}
-            <div className="h-0.5 w-full bg-white/10 overflow-hidden relative rounded-full">
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: "0%" }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-                className="absolute inset-0 bg-blue-600"
-              />
-            </div>
           </div>
         </motion.div>
       )}

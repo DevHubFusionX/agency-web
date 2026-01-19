@@ -41,7 +41,13 @@ const Step = ({ number, title, description, icon: Icon, delay, isLast }) => {
     )
 }
 
+import WaveBackground from './ui/WaveBackground'
+
+// ... existing Step component ...
+
 const OurApproach = () => {
+    // ... existing steps array ...
+
     const steps = [
         {
             number: '01',
@@ -76,7 +82,7 @@ const OurApproach = () => {
     ]
 
     return (
-        <Section className="py-24 md:py-32 relative bg-white">
+        <Section className="py-24 md:py-32 relative bg-white overflow-hidden">
             <div className="absolute top-20 right-10 opacity-[0.03] pointer-events-none select-none uppercase font-black text-[10vw] whitespace-nowrap leading-none tracking-tighter text-right">
                 Nemvol <br /> Playbook
             </div>
@@ -144,6 +150,8 @@ const OurApproach = () => {
                     </div>
                 </div>
             </div>
+
+            <WaveBackground position="bottom" />
         </Section>
     )
 }

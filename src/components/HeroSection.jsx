@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, AlertCircle, CheckCircle2, Zap, Clock, ShieldCheck } from 'lucide-react'
 import HeroBackground from './ui/HeroBackground'
 
+import WaveBackground from './ui/WaveBackground'
+
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center pt-32 pb-20 relative overflow-hidden bg-white">
+    <section className="min-h-screen flex items-center pt-32 pb-40 relative overflow-hidden bg-white">
       {/* Three.js Particle Background - z-0 */}
       <HeroBackground />
 
@@ -22,47 +24,55 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
           {/* Content Side */}
-          <div className="flex flex-col items-start gap-8">
+          <div className="flex flex-col items-start gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-xs uppercase tracking-widest"
+            >
+              Building People, Brands and purpose
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-gray-900 leading-[1.1] tracking-tight"
+              transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="text-5xl md:text-6xl lg:text-[5.5rem] font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              Stop Guessing. <br />
-              Build <span className="text-blue-600 italic">Validated.</span>
+              The MVP & Growth Partner for <span className="text-blue-600 italic">Founders.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="text-xl md:text-2xl text-gray-500 leading-relaxed font-medium max-w-lg"
             >
-              We help founders launch lean, high-performing MVPs in 8–12 weeks — focused on validation, not feature bloat.
+              We design, build, and prove your digital product in 8–12 weeks — and stay to turn traction into revenue.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-wrap gap-4 pt-4"
             >
               <Link
                 to="/contact"
                 className="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300 flex items-center gap-3 group"
               >
-                Validate My Idea
+                Start Discovery Sprint
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
 
             <div className="flex items-center gap-8 mt-4 border-l-2 border-gray-200 pl-8">
               {[
-                { icon: Clock, text: '8-12 Wk Launch' },
+                { icon: Clock, text: '8-12 Wk Build' },
                 { icon: ShieldCheck, text: '100% IP Ownership' }
               ].map((item, i) => (
                 <motion.div
@@ -70,7 +80,7 @@ const HeroSection = () => {
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
-                  transition={{ delay: 0.25 + (i * 0.05), duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ delay: 0.4 + (i * 0.05), duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-gray-400"
                 >
                   <item.icon className="text-blue-600" size={18} />
@@ -94,10 +104,10 @@ const HeroSection = () => {
               <div className="bg-white/80 backdrop-blur-sm border border-red-100 p-6 rounded-3xl relative overflow-hidden group hover:bg-white/90 transition-colors shadow-sm">
                 <div className="flex items-center gap-3 mb-4">
                   <AlertCircle size={18} className="text-red-500" />
-                  <span className="text-red-500 font-black uppercase tracking-widest text-[10px]">The Traditional Way</span>
+                  <span className="text-red-500 font-black uppercase tracking-widest text-[10px]">The Old Way</span>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {['6+ Month Builds', 'Feature Creep', 'High Technical Debt'].map((item) => (
+                  {['Freelancer Chaos', 'Agency Bloat', 'Missed Deadlines', 'Feature Creep'].map((item) => (
                     <span key={item} className="px-3 py-1.5 bg-red-50 text-red-400 text-[11px] font-bold rounded-full border border-red-100/50">
                       {item}
                     </span>
@@ -123,9 +133,9 @@ const HeroSection = () => {
                 </div>
                 <ul className="space-y-4">
                   {[
-                    { text: '8-12 Week Launch', icon: Clock },
-                    { text: 'Data-Backed Validation', icon: CheckCircle2 },
-                    { text: 'Investment-Ready Build', icon: ShieldCheck }
+                    { text: 'Discovery First', icon: Clock },
+                    { text: 'Fixed Outcomes', icon: CheckCircle2 },
+                    { text: 'Growth Retainer', icon: ShieldCheck }
                   ].map((item) => (
                     <li key={item.text} className="flex items-center gap-4 font-black text-xl tracking-tight">
                       <div className="p-1.5 bg-blue-500 rounded-lg">
@@ -151,6 +161,8 @@ const HeroSection = () => {
 
         </div>
       </div>
+
+      <WaveBackground />
     </section>
   )
 }

@@ -8,25 +8,25 @@ import teamSam from '../../assets/team-sam.png'
 const team = [
   {
     name: 'Alex Chen',
-    role: 'Founder & Lead Engineer',
-    bio: 'Full-stack engineer with 8+ years building digital products. Obsessed with clean architecture and performance.',
-    expertise: ['React', 'Next.js', 'System Design'],
+    role: 'Product Strategist',
+    bio: 'Former founder who understands the chaos of zero-to-one. Ensures every product we build has a clear path to market-fit.',
+    expertise: ['Product Strategy', 'Growth', 'Lean Startup'],
     image: teamAlex,
     featured: true
   },
   {
     name: 'Maria Rodriguez',
-    role: 'Mobile Lead',
-    bio: 'Mobile specialist who shipped 50+ apps. Believers in native-quality cross-platform experiences.',
-    expertise: ['React Native', 'iOS', 'Android'],
+    role: 'Lead Engineer',
+    bio: 'Full-stack architect obsessed with specialized performance. She ensures your MVP scales from day 1.',
+    expertise: ['System Architecture', 'Scalability', 'Security'],
     image: teamMaria,
     featured: false
   },
   {
     name: 'Sam Kim',
-    role: 'Head of Backend',
-    bio: 'Backend architect with a passion for scalable, resilient APIs. Previously at enterprise-scale startups.',
-    expertise: ['Node.js', 'Cloud', 'APIs'],
+    role: 'Product Designer',
+    bio: 'Crafting intuitive, "don\'t make me think" interfaces. Believes that good design is invisible and frictionless.',
+    expertise: ['UI/UX', 'Interaction Design', 'User Testing'],
     image: teamSam,
     featured: false
   }
