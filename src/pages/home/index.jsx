@@ -14,7 +14,7 @@ const CoreCapabilities = lazy(() => import('../../components/CoreCapabilities'))
 const Testimonials = lazy(() => import('../../components/Testimonials'))
 const CompetitivePositioning = lazy(() => import('../../components/CompetitivePositioning'))
 const TargetAudience = lazy(() => import('../../components/TargetAudience'))
-const LeadMagnet = lazy(() => import('../../components/LeadMagnet'))
+
 const StrategicEngagement = lazy(() => import('../../components/StrategicEngagement'))
 
 const Home = () => {
@@ -25,18 +25,15 @@ const Home = () => {
       {/* Hero Section - Loaded Immediately for FCP/LCP */}
       <HeroSection />
 
+      <Suspense fallback={<SectionSkeleton />}>
+        <CoreCapabilities />
+      </Suspense>
+
+
+
       {/* Below the Fold Content - Lazy Loaded */}
       <Suspense fallback={<SectionSkeleton className="py-12" />}>
         <ClientLogos />
-      </Suspense>
-
-      <Suspense fallback={<SectionSkeleton />}>
-        <ExcellenceMetrics />
-        <OurApproach />
-      </Suspense>
-
-      <Suspense fallback={<SectionSkeleton />}>
-        <CoreCapabilities />
       </Suspense>
 
       <Suspense fallback={<SectionSkeleton />}>
@@ -51,9 +48,7 @@ const Home = () => {
         <TargetAudience />
       </Suspense>
 
-      <Suspense fallback={<SectionSkeleton />}>
-        <LeadMagnet />
-      </Suspense>
+
 
       <Suspense fallback={<SectionSkeleton />}>
         <StrategicEngagement />

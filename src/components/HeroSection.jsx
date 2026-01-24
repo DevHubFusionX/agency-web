@@ -1,13 +1,16 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowRight, AlertCircle, CheckCircle2, Zap, Clock, ShieldCheck } from 'lucide-react'
+import { ArrowRight, AlertCircle, CheckCircle2, Zap, Clock, ShieldCheck, Calendar } from 'lucide-react'
 import HeroBackground from './ui/HeroBackground'
-
+import Modal from './ui/Modal'
+import HeroLeadForm from './contact/HeroLeadForm'
 import WaveBackground from './ui/WaveBackground'
 
 const HeroSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
-    <section className="min-h-screen flex items-center pt-32 pb-40 relative overflow-hidden bg-white">
+    <section className="min-h-screen flex items-center pt-16 pb-40 relative overflow-hidden bg-white">
       {/* Three.js Particle Background - z-0 */}
       <HeroBackground />
 
@@ -25,14 +28,7 @@ const HeroSection = () => {
 
           {/* Content Side */}
           <div className="flex flex-col items-start gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-xs uppercase tracking-widest"
-            >
-              Building People, Brands and purpose
-            </motion.div>
+
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -98,61 +94,35 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div className="relative space-y-4" style={{ zIndex: 10 }}>
+            {/* Desktop Inline Form */}
+            <div className="hidden lg:block">
+              <HeroLeadForm />
+            </div>
 
-              {/* Before Card */}
-              <div className="bg-white/80 backdrop-blur-sm border border-red-100 p-6 rounded-3xl relative overflow-hidden group hover:bg-white/90 transition-colors shadow-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <AlertCircle size={18} className="text-red-500" />
-                  <span className="text-red-500 font-black uppercase tracking-widest text-[10px]">The Old Way</span>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  {['Freelancer Chaos', 'Agency Bloat', 'Missed Deadlines', 'Feature Creep'].map((item) => (
-                    <span key={item} className="px-3 py-1.5 bg-red-50 text-red-400 text-[11px] font-bold rounded-full border border-red-100/50">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Connector */}
-              <div className="flex justify-center -my-2 relative z-20">
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg">
-                  <ArrowRight className="rotate-90" size={18} />
-                </div>
-              </div>
-
-              {/* After Card */}
+            {/* Mobile Lead CTA Card */}
+            <div className="lg:hidden">
               <div className="bg-blue-600 p-8 rounded-[2.5rem] text-white shadow-2xl shadow-blue-500/30 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <CheckCircle2 size={100} />
+                <div className="absolute top-0 right-0 p-6 opacity-10">
+                  <Zap size={100} />
                 </div>
-                <div className="flex items-center gap-3 mb-6">
-                  <Zap size={18} className="text-blue-200 fill-blue-200" />
-                  <span className="text-blue-200 font-black uppercase tracking-widest text-[10px]">The Nemvol Advantage</span>
-                </div>
-                <ul className="space-y-4">
-                  {[
-                    { text: 'Discovery First', icon: Clock },
-                    { text: 'Fixed Outcomes', icon: CheckCircle2 },
-                    { text: 'Growth Retainer', icon: ShieldCheck }
-                  ].map((item) => (
-                    <li key={item.text} className="flex items-center gap-4 font-black text-xl tracking-tight">
-                      <div className="p-1.5 bg-blue-500 rounded-lg">
-                        <item.icon className="text-white" size={20} />
-                      </div>
-                      {item.text}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 pt-6 border-t border-blue-500/50 flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-blue-100 uppercase tracking-widest">Market-Ready Outcome</span>
-                  <div className="flex gap-1.5">
-                    {[1, 2, 3].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-blue-300" />)}
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-200 animate-pulse" />
+                    <span className="text-blue-200 font-black uppercase tracking-widest text-[10px]">Limited Availability</span>
                   </div>
+                  <h3 className="text-2xl font-bold mb-4">Ready to build your MVP?</h3>
+                  <p className="text-blue-50/80 font-medium mb-8 text-sm">
+                    Book a free discovery session with our technical team today.
+                  </p>
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="w-full bg-white text-blue-600 py-5 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 shadow-xl hover:bg-blue-50 transition-colors"
+                  >
+                    Claim Strategy Call
+                    <Calendar size={18} />
+                  </button>
                 </div>
               </div>
-
             </div>
 
             {/* Subtler Glows */}
@@ -162,7 +132,16 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <WaveBackground />
+     
+
+      {/* Mobile Modal for Lead Form */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Strategy Session"
+      >
+        <HeroLeadForm compact />
+      </Modal>
     </section>
   )
 }

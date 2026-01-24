@@ -85,10 +85,10 @@ const CoreCapabilities = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-              className="text-6xl md:text-8xl font-bold text-gray-900 leading-[0.9] tracking-tight"
+              className="text-6xl md:text-8xl font-bold text-gray-900 leading-[0.9] tracking-tight hidden md:block"
             >
               Built for <br />
-              <span className="text-blue-600 italic">Global Scale.</span>
+              <span className="text-blue-600 italic">End-to-End Success.</span>
             </motion.h2>
           </div>
 
