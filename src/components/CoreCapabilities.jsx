@@ -85,10 +85,10 @@ const CoreCapabilities = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-              className="text-6xl md:text-8xl font-bold text-gray-900 leading-[0.9] tracking-tight"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-[1.1] md:leading-[0.9] tracking-tight"
             >
-              Built for <br />
-              <span className="text-blue-600 italic">End-to-End Success.</span>
+              Services <br />
+              <span className="text-blue-600 italic">we offer.</span>
             </motion.h2>
           </div>
 
