@@ -55,15 +55,23 @@ const HeroSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto"
             >
               <Link
                 to="/contact"
-                className="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300 flex items-center gap-3 group"
+                className="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300 flex items-center justify-center gap-3 group"
               >
                 Start Discovery Sprint
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
+
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 border-2 border-gray-100 text-gray-400 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
+              >
+                Book Strategy session
+                <Calendar size={18} />
+              </button>
             </motion.div>
 
             <div className="flex items-center gap-8 mt-4 border-l-2 border-gray-200 pl-8">
@@ -95,34 +103,8 @@ const HeroSection = () => {
             className="relative"
           >
             {/* Desktop Inline Form */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block relative z-10">
               <HeroLeadForm />
-            </div>
-
-            {/* Mobile Lead CTA Card */}
-            <div className="lg:hidden">
-              <div className="bg-blue-600 p-8 rounded-[2.5rem] text-white shadow-2xl shadow-blue-500/30 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-6 opacity-10">
-                  <Zap size={100} />
-                </div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-200 animate-pulse" />
-                    <span className="text-blue-200 font-black uppercase tracking-widest text-[10px]">Limited Availability</span>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">Ready to build your MVP?</h3>
-                  <p className="text-blue-50/80 font-medium mb-8 text-sm">
-                    Book a free discovery session with our technical team today.
-                  </p>
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="w-full bg-white text-blue-600 py-5 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 shadow-xl hover:bg-blue-50 transition-colors"
-                  >
-                    Claim Strategy Call
-                    <Calendar size={18} />
-                  </button>
-                </div>
-              </div>
             </div>
 
             {/* Subtler Glows */}
@@ -132,7 +114,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-     
+
 
       {/* Mobile Modal for Lead Form */}
       <Modal
