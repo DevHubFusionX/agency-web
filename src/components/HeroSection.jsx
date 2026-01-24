@@ -10,7 +10,7 @@ import WaveBackground from './ui/WaveBackground'
 const HeroSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   return (
-    <section className="min-h-screen flex items-center pt-16 pb-40 relative overflow-hidden bg-white">
+    <section className="min-h-screen flex items-center pt-16 pb-20 relative overflow-hidden bg-white">
       {/* Three.js Particle Background - z-0 */}
       <HeroBackground />
 
