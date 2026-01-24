@@ -37,7 +37,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="text-5xl md:text-6xl lg:text-[5.5rem] font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              The MVP & Growth Partner for <span className="text-blue-600 italic">Founders.</span>
+              The MVP & Development Partner for <span className="text-blue-600 italic">Founders.</span>
             </motion.h1>
 
             <motion.p
