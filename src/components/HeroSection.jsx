@@ -55,7 +55,7 @@ const HeroSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto"
+              className="flex flex-col gap-4 pt-4 w-full sm:w-auto"
             >
               <Link
                 to="/contact"
