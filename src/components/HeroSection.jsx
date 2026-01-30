@@ -67,7 +67,7 @@ const HeroSection = () => {
 
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 border-2 border-gray-100 text-gray-400 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
+                className="lg:hidden px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 border-2 border-gray-100 text-gray-400 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
               >
                 Book Strategy session
                 <Calendar size={18} />
@@ -103,7 +103,7 @@ const HeroSection = () => {
             className="relative"
           >
             {/* Desktop Inline Form */}
-            <div className="hidden lg:block relative z-10">
+            <div className="hidden lg:block relative z-10 lg:-mt-40">
               <HeroLeadForm />
             </div>
 

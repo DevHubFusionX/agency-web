@@ -4,7 +4,7 @@ import ParticleField from '../ui/ParticleField'
 
 const AboutHero = () => {
   return (
-    <Section className="min-h-[90vh] flex items-center justify-center pt-32 pb-48 relative overflow-hidden bg-white">
+    <Section className="min-h-[90vh] flex items-center justify-center pt-16 pb-48 relative overflow-hidden bg-white">
       {/* Decorative Background Section Title */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center opacity-[0.02] pointer-events-none select-none uppercase font-black text-[25vw] whitespace-nowrap leading-none tracking-tighter">
         Nemvol Studio

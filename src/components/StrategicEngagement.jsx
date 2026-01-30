@@ -1,10 +1,15 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, MessageCircle, Calendar, Shield } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Button from './ui/Button'
 import Section from './ui/Section'
+import Modal from './ui/Modal'
+import HeroLeadForm from './contact/HeroLeadForm'
 
 const StrategicEngagement = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <Section className="py-16 md:py-24 relative overflow-hidden bg-blue-600" background="none">
       {/* Background Decorative Text */}
@@ -52,12 +57,15 @@ const StrategicEngagement = () => {
           transition={{ delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center"
         >
-          <Link to="/contact">
-            <Button size="lg" className="group bg-white hover:bg-blue-50 !text-blue-600 px-10 md:px-12 py-5 md:py-6 rounded-full font-black uppercase tracking-widest text-xs md:text-sm shadow-xl shadow-blue-900/20">
-              Start Your Discovery
-              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            size="lg"
+            className="group bg-white hover:bg-blue-50 !text-blue-600 px-10 md:px-12 py-5 md:py-6 rounded-full font-black uppercase tracking-widest text-xs md:text-sm shadow-xl shadow-blue-900/20"
+          >
+            Book Strategy session
+            <Calendar size={18} className="ml-2 group-hover:scale-110 transition-transform" />
+          </Button>
+
           <Link to="/portfolio">
             <Button variant="outline" size="lg" className="border-white/40 text-white hover:bg-white/10 px-10 md:px-12 py-5 md:py-6 rounded-full font-black uppercase tracking-widest text-xs md:text-sm backdrop-blur-sm">
               Explore Our Work
@@ -84,6 +92,15 @@ const StrategicEngagement = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Strategy Session Modal */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Strategy Session"
+      >
+        <HeroLeadForm compact />
+      </Modal>
     </Section>
   )
 }
