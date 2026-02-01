@@ -40,7 +40,7 @@ const FloatingCubes = () => {
   const groupRef = useRef()
 
   const cubes = useMemo(() => {
-    return [...Array(12)].map((_, i) => ({
+    return [...Array(12)].map(() => ({
       position: [
         (Math.random() - 0.5) * 20,
         (Math.random() - 0.5) * 12,
