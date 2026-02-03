@@ -70,7 +70,7 @@ const Footer = () => {
               <div className="space-y-6">
                 <div>
                   <div className="text-xs font-black uppercase tracking-widest text-blue-500 mb-2">Technical Sales</div>
-                  <a href="mailto:hello@nemvol.com" className="text-lg font-bold text-white hover:text-blue-400 transition-colors">hello@nemvol.com</a>
+                  <a href="mailto:nemvolltd@gmail.com" className="text-lg font-bold text-white hover:text-blue-400 transition-colors">nemvolltd@gmail.com</a>
                 </div>
                 <div>
                   <div className="text-xs font-black uppercase tracking-widest text-blue-500 mb-2">Connect</div>

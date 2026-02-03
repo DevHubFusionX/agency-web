@@ -196,7 +196,7 @@ const Header = () => {
                   <div className="space-y-3">
                     <div className="flex items-center gap-3 text-sm text-gray-600">
                       <Mail size={16} className="text-blue-500" />
-                      <span>hello@nemvol.com</span>
+                      <span>nemvolltd@gmail.com</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm text-gray-600">
                       <Phone size={16} className="text-blue-500" />
@@ -205,7 +205,7 @@ const Header = () => {
                   </div>
                   <div className="mt-4 pt-4 border-t border-gray-200">
                     <p className="text-xs text-gray-500 text-center">
-                      © 2024 Nemvol. All rights reserved.
+                      © 2026 Nemvol. All rights reserved.
                     </p>
                   </div>
                 </div>

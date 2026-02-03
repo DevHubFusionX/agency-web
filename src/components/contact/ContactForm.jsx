@@ -41,7 +41,7 @@ const ContactForm = () => {
 
   return (
     <Section background="none" className="py-4 bg-gray-50/30">
-      <div className=" mx-auto px-2 md:px-6">
+      <div className="mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
           {/* Form Side */}
@@ -50,7 +50,7 @@ const ContactForm = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-[1rem] md:rounded-[2.5rem] p-4 md:p-12 shadow-2xl shadow-blue-500/5 border border-gray-100"
+              className="bg-white rounded-2xl md:rounded-[2.5rem] p-6 md:p-12 shadow-2xl shadow-blue-500/5 border border-gray-100"
             >
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Let's Build Your <span className="text-blue-600">MVP.</span>
@@ -118,13 +118,19 @@ const ContactForm = () => {
                 </div>
 
                 <div className="pt-4">
-                  <Button type="submit" size="lg" className="w-full h-14 md:h-16 rounded-2xl text-base md:text-lg font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 group" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full h-14 md:h-16 rounded-2xl text-sm sm:text-base md:text-lg font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 group"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? (
                       <LoadingSpinner size="sm" />
                     ) : (
-                      <span className="flex items-center gap-3">
+                      <span className="flex items-center justify-center gap-2 sm:gap-3">
                         Book Consultation
-                        <Calendar size={20} className="group-hover:rotate-12 transition-transform" />
+                        <Calendar size={20} className="group-hover:rotate-12 transition-transform hidden sm:block" />
+                        <Calendar size={18} className="group-hover:rotate-12 transition-transform sm:hidden" />
                       </span>
                     )}
                   </Button>

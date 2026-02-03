@@ -5,8 +5,8 @@ import Section from '../ui/Section'
 const ContactInfo = () => {
   return (
     <Section background="none" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
 
           {/* Contact Details */}
           <motion.div
@@ -23,7 +23,7 @@ const ContactInfo = () => {
                 </div>
                 <div>
                   <h4 className="text-[10px] md:text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Direct Email</h4>
-                  <p className="text-gray-900 font-bold text-base md:text-lg mb-0.5 md:mb-1">hello@nemvol.com</p>
+                  <p className="text-gray-900 font-bold text-base md:text-lg mb-0.5 md:mb-1">nemvolltd@gmail.com</p>
                   <p className="text-xs md:text-sm text-gray-500 font-medium italic">Response in &lt; 4 hours</p>
                 </div>
               </div>
@@ -119,7 +119,7 @@ const ContactInfo = () => {
             </div>
 
             <div className="mt-auto pt-10">
-              <p className="text-xs font-black uppercase tracking-widest text-gray-300 text-center">Nemvol Studio © 2024</p>
+              <p className="text-xs font-black uppercase tracking-widest text-gray-300 text-center">Nemvol Studio © 2026</p>
             </div>
           </motion.div>
 
