@@ -2,17 +2,25 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, AlertCircle, CheckCircle2, Zap, Clock, ShieldCheck, Calendar } from 'lucide-react'
-import HeroBackground from './ui/HeroBackground'
+import { Suspense, lazy } from 'react'
 import Modal from './ui/Modal'
 import HeroLeadForm from './contact/HeroLeadForm'
 import WaveBackground from './ui/WaveBackground'
+
+// Lazy load 3D components for better performance
+const HeroBackground = lazy(() => import('./ui/HeroBackground'))
+const HeroFallback = () => (
+  <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/30 to-white" style={{ zIndex: 0 }} />
+)
 
 const HeroSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <section className="min-h-screen flex items-center pt-16 pb-20 relative overflow-hidden bg-white">
       {/* Three.js Particle Background - z-0 */}
-      <HeroBackground />
+      <Suspense fallback={<HeroFallback />}>
+        <HeroBackground />
+      </Suspense>
 
       {/* Subtle Background Text - z-1 */}
       <div

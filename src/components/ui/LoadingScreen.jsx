@@ -6,12 +6,14 @@ const LoadingScreen = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Fast exit: if content ready, fade out sooner
+    // Minimum visual impact duration
+    const minTimer = setTimeout(() => {
       setIsVisible(false)
-      setTimeout(onComplete, 800)
-    }, 3500) // Slightly longer to allow animation to play
+      setTimeout(onComplete, 600) // Slightly faster exit transition
+    }, 2000) // Reduced from 3500ms -> 2000ms for punchier feel
 
-    return () => clearTimeout(timer)
+    return () => clearTimeout(minTimer)
   }, [onComplete])
 
   return (
