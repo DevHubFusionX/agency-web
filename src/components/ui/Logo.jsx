@@ -8,6 +8,9 @@ const Logo = ({ className = "h-10", iconOnly = true }) => {
                     src="/image.svg"
                     alt="Nemvol Logo"
                     className="w-full h-full object-contain"
+                    width="40"
+                    height="40"
+                    decoding="async"
                 />
             </div>
             {!iconOnly && (

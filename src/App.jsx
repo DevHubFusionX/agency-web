@@ -1,5 +1,6 @@
 import { useState, useLayoutEffect } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { LazyMotion, domAnimation } from 'framer-motion'
 import Layout from './components/layout/Layout'
 import ErrorBoundary from './components/ui/ErrorBoundary'
 import LoadingScreen from './components/ui/LoadingScreen'
@@ -19,12 +20,14 @@ function App() {
   return (
     <ErrorBoundary>
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
-      <Router>
-        <ScrollToTop />
-        <Layout>
-          <AppRoutes />
-        </Layout>
-      </Router>
+      <LazyMotion features={domAnimation}>
+        <Router>
+          <ScrollToTop />
+          <Layout>
+            <AppRoutes />
+          </Layout>
+        </Router>
+      </LazyMotion>
     </ErrorBoundary>
   )
 }

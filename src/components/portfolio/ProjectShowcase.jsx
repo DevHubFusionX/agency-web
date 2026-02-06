@@ -94,6 +94,7 @@ const ProjectCard = ({ project, index, featured = false }) => {
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 

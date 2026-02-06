@@ -32,8 +32,8 @@ const BlogGrid = () => {
               key={category}
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${selectedCategory === category
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
-                  : 'bg-white text-gray-500 hover:bg-blue-50 hover:text-blue-600 border border-gray-100'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
+                : 'bg-white text-gray-500 hover:bg-blue-50 hover:text-blue-600 border border-gray-100'
                 }`}
             >
               {category}
@@ -72,6 +72,8 @@ const BlogGrid = () => {
                     src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   <div className="absolute top-4 left-4">

@@ -10,8 +10,8 @@ const LoadingScreen = ({ onComplete }) => {
     // Minimum visual impact duration
     const minTimer = setTimeout(() => {
       setIsVisible(false)
-      setTimeout(onComplete, 600) // Slightly faster exit transition
-    }, 2000) // Reduced from 3500ms -> 2000ms for punchier feel
+      setTimeout(onComplete, 400) // Even faster exit
+    }, 800) // Drastically reduced from 2000ms -> 800ms for speed
 
     return () => clearTimeout(minTimer)
   }, [onComplete])
