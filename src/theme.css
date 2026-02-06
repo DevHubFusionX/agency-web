@@ -1,7 +1,6 @@
 /* Nemvol Agency Theme - Purple & Green */
 
-/* Import brand fonts: Poppins for headings, Inter for body */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* Brand fonts: Poppins for headings, Inter for body (Loaded in index.html) */
 
 :root {
   /* Typography - Based on Branding.md Section 2 */
