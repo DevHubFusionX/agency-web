@@ -1,4 +1,3 @@
-import daraLogistics from "../assets/Dara-Logistics.png"
 import sparkDating from "../assets/Dating-app.png"
 import cleanMaster from "../assets/Cleaner-Image.png"
 import photographyWeb from "../assets/Photography-web.png"
@@ -6,29 +5,6 @@ import photographyWeb from "../assets/Photography-web.png"
 export const projects = [
   {
     id: 1,
-    title: 'Daraexpress',
-    category: 'startup',
-    client: 'Daraexpress Ltd',
-    industry: 'Logistics & Supply Chain',
-    link: 'https://daraexpress.com/',
-    description: 'A comprehensive logistics management platform that streamlined operations for a regional carrier.',
-    fullDescription: 'We partnered with Dara Logistics to build a robust end-to-end management system. The platform handles real-time fleet tracking, automated dispatching, and a comprehensive client portal for shipment tracking and invoicing.',
-    challenge: 'The client was struggling with manual dispatching and lack of real-time visibility, leading to delivery delays and customer dissatisfaction.',
-    solution: 'We developed a custom dashboard with integrated GPS tracking and automated route optimization. The system was built using React and Node.js for scalability and performance.',
-    results: ['40% reduction in dispatch time', 'Real-time fleet visibility', '25% increase in delivery efficiency', 'Improved customer satisfaction rating'],
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Google Maps API', 'WebSockets'],
-    image: daraLogistics,
-    timeline: '12 weeks',
-    teamSize: '4 engineers',
-    featured: true,
-    testimonial: {
-      quote: "The platform Nemvol built transformed our business operations. We now have complete control over our fleet and our clients love the transparency.",
-      author: "Ibrahim Yusuf",
-      position: "COO, Dara Logistics"
-    }
-  },
-  {
-    id: 2,
     title: 'Blynque',
     category: 'startup',
     client: 'Blynque Team',
@@ -51,7 +27,7 @@ export const projects = [
     }
   },
   {
-    id: 3,
+    id: 2,
     title: 'Comtranz Global',
     category: 'service',
     client: 'Comtranz Global Ltd',
@@ -74,7 +50,7 @@ export const projects = [
     }
   },
   {
-    id: 4,
+    id: 3,
     title: 'Lucis',
     category: 'agency',
     client: 'Lucis Studio',
