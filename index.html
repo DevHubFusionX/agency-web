@@ -24,15 +24,16 @@
     <meta property="twitter:description" content="Leading product development agency for lean MVPs and digital innovation." />
     <meta property="twitter:image" content="https://nemvol.com/og-image.jpg" />
     
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD Structured Data - Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "NEMVOL",
+      "alternateName": "Nemvol Limited",
       "url": "https://nemvol.com",
       "logo": "https://nemvol.com/logo.png",
-      "description": "NEMVOL helps founders, startups, and SMEs turn ideas into validated digital products fast.",
+      "description": "NEMVOL is a leading web and app development agency specializing in MVP development, product discovery, UI/UX design, and digital innovation for startups and SMEs.",
       "email": "nemvolltd@gmail.com",
       "sameAs": [
         "https://www.linkedin.com/company/nemvol",
@@ -45,16 +46,97 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "nemvolltd@gmail.com",
-        "contactType": "Customer Service"
+        "contactType": "Customer Service",
+        "availableLanguage": ["English"]
       },
       "foundingDate": "2024",
-      "offers": {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "MVP Development",
-          "description": "Build validated digital products in 8-12 weeks"
-        }
+      "slogan": "Build Validated Digital Products"
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data - Services -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "NEMVOL - Web & App Development Agency",
+      "url": "https://nemvol.com",
+      "logo": "https://nemvol.com/logo.png",
+      "description": "Professional web development, mobile app development, and MVP development services for startups and businesses.",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NG"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": ["Nigeria", "United States", "United Kingdom", "Worldwide"]
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Product Development Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "MVP Development",
+              "description": "Build and validate minimum viable products in 8-12 weeks with our lean development process.",
+              "provider": {
+                "@type": "Organization",
+                "name": "NEMVOL"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Development",
+              "description": "Custom web application development using React, Next.js, and modern tech stacks for scalable solutions.",
+              "provider": {
+                "@type": "Organization",
+                "name": "NEMVOL"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile App Development",
+              "description": "Cross-platform mobile app development with React Native for iOS and Android.",
+              "provider": {
+                "@type": "Organization",
+                "name": "NEMVOL"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UI/UX Design",
+              "description": "User-centered interface and experience design for digital products that convert.",
+              "provider": {
+                "@type": "Organization",
+                "name": "NEMVOL"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Product Discovery",
+              "description": "Strategic product planning and validation to ensure market fit before development.",
+              "provider": {
+                "@type": "Organization",
+                "name": "NEMVOL"
+              }
+            }
+          }
+        ]
       }
     }
     </script>
