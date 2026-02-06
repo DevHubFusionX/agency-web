@@ -47,7 +47,7 @@ const getTransformationData = (project) => {
         ]
       }
     },
-    'AgencyOS': {
+    'Lucis': {
       before: {
         headline: 'The Challenge',
         points: [

@@ -1,5 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom'
-import { Shield, Smartphone, ArrowLeft, Calendar, Users, Briefcase } from 'lucide-react'
+import { Shield, Smartphone, ArrowLeft, Calendar, Users, Briefcase, ExternalLink } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { projects } from '../../data/projects'
 import SEO from '../SEO'
@@ -55,6 +55,17 @@ const ProjectDetail = () => {
                   <Users size={18} className="text-blue-600" />
                   <span className="font-bold text-sm uppercase tracking-wider">{project.teamSize}</span>
                 </div>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-bold text-sm uppercase tracking-wider transition-colors group/link"
+                  >
+                    <ExternalLink size={18} className="group-hover/link:translate-y-[-2px] group-hover/link:translate-x-[2px] transition-transform" />
+                    Visit Live Website
+                  </a>
+                )}
               </div>
             </motion.div>
 

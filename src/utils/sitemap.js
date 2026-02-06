@@ -1,7 +1,7 @@
 import { projects } from '../data/projects'
 
 export const generateSitemap = () => {
-  const baseUrl = 'https://yourdomain.com'
+  const baseUrl = 'https://nemvol.com'
   const staticPages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
     { url: '/about', priority: '0.8', changefreq: 'monthly' },
