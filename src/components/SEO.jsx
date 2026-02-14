@@ -4,7 +4,7 @@ const SEO = ({
   title = "NEMVOL - Build Validated Digital Products",
   description = "NEMVOL helps founders, startups, and SMEs turn ideas into validated digital products fast. MVP development, UI/UX design, and digital innovation.",
   keywords = "Nemvol, MVP development, product discovery, UI/UX design, web development, mobile apps, startup validation, digital agency",
-  image = "https://nemvol.com/og-image.jpg",
+  image = "https://nemvol.com/image.png",
   url = typeof window !== 'undefined' ? window.location.href : 'https://nemvol.com',
   type = "website"
 }) => {

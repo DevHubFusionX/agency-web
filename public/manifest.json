@@ -3,13 +3,13 @@
   "name": "NEMVOL - Build Validated Digital Products",
   "icons": [
     {
-      "src": "favicon.svg",
-      "type": "image/svg+xml",
+      "src": "image.png",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "Logo.svg",
-      "type": "image/svg+xml",
+      "src": "image.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],
