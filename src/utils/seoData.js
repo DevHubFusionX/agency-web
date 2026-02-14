@@ -1,27 +1,27 @@
 export const seoData = {
   home: {
-    title: "Digital Agency - Expert Web Development & Design Solutions",
-    description: "Transform your business with our professional web development, design, and digital marketing services. React specialists delivering enterprise-grade solutions.",
-    keywords: "digital agency, web development, react development, web design, digital marketing, enterprise solutions"
+    title: "NEMVOL - Build Validated Digital Products in 8-12 Weeks",
+    description: "The MVP & development partner for founders. We design, build, and validate your digital product fast. Specialized in React, product discovery, and lean builds.",
+    keywords: "Nemvol, MVP development, startup partner, digital agency, product discovery, lean builds, React development, mobile apps"
   },
   about: {
-    title: "About Us - Digital Agency Leadership & Expertise",
-    description: "Meet our expert team of developers and designers. Learn about our mission to deliver exceptional digital solutions for businesses worldwide.",
-    keywords: "about digital agency, web development team, company leadership, digital expertise"
+    title: "About NEMVOL - Digital Innovation & MVP Experts",
+    description: "Learn how NEMVOL helps founders turn scattered ideas into investor-ready digital products. Discover our mission, core values, and expert team.",
+    keywords: "NEMVOL about, MVP experts, digital innovation, product strategy, founding team"
   },
   services: {
-    title: "Services - Web Development, Design & Digital Marketing",
-    description: "Comprehensive digital services including React development, UI/UX design, e-commerce solutions, and digital marketing strategies.",
-    keywords: "web development services, react development, UI UX design, digital marketing, e-commerce development"
+    title: "Digital Agency Services - MVP Development & UI/UX Design",
+    description: "Comprehensive product development services: MVP Discovery, Lean Builds, UI/UX Design, and Strategic Consulting to scale your startup.",
+    keywords: "MVP development services, UI/UX design agency, product discovery sprint, startup consulting, web development"
   },
   portfolio: {
-    title: "Portfolio - Our Best Web Development Projects & Case Studies",
-    description: "Explore our portfolio of successful web development projects, case studies, and client success stories across various industries.",
-    keywords: "web development portfolio, case studies, client projects, react applications, digital solutions"
+    title: "Portfolio - Validated Digital Products & Case Studies | NEMVOL",
+    description: "Explore our successful projects and case studies. See how we've helped founders build and launch market-ready digital solutions.",
+    keywords: "NEMVOL portfolio, startup case studies, digital products, MVP examples, web development projects"
   },
   contact: {
-    title: "Contact Us - Get Your Web Development Project Started",
-    description: "Ready to start your next digital project? Contact our expert team for a consultation and project estimate. Let's build something extraordinary.",
-    keywords: "contact digital agency, web development consultation, project estimate, get started"
+    title: "Contact NEMVOL - Book Your Strategy Session",
+    description: "Ready to build your MVP? Contact our expert team for a consultation and project estimate. Let's transform your idea into a validated product.",
+    keywords: "contact NEMVOL, startup consultation, book strategy session, project estimate, MVP build"
   }
 }

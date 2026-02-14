@@ -35,16 +35,52 @@ const SEO = ({
 
     updateMeta('description', description)
     updateMeta('keywords', keywords)
+    updateMeta('author', 'NEMVOL Limited')
+    updateMeta('robots', 'index, follow')
+
+    // Open Graph
     updateMeta('og:title', title)
     updateMeta('og:description', description)
     updateMeta('og:image', image)
     updateMeta('og:url', url)
     updateMeta('og:type', type)
     updateMeta('og:site_name', 'NEMVOL')
+
+    // Twitter
     updateMeta('twitter:card', 'summary_large_image')
     updateMeta('twitter:title', title)
     updateMeta('twitter:description', description)
     updateMeta('twitter:image', image)
+
+    // JSON-LD BreadcrumbList
+    const pathSegments = new URL(url).pathname.split('/').filter(Boolean)
+    const breadcrumbList = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nemvol.com"
+        },
+        ...pathSegments.map((segment, index) => ({
+          "@type": "ListItem",
+          "position": index + 2,
+          "name": segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
+          "item": `https://nemvol.com/${pathSegments.slice(0, index + 1).join('/')}`
+        }))
+      ]
+    }
+
+    let script = document.querySelector('script[data-seo="breadcrumb"]')
+    if (!script) {
+      script = document.createElement('script')
+      script.setAttribute('type', 'application/ld+json')
+      script.setAttribute('data-seo', 'breadcrumb')
+      document.head.appendChild(script)
+    }
+    script.textContent = JSON.stringify(breadcrumbList)
   }, [title, description, keywords, image, url, type])
 
   return null
