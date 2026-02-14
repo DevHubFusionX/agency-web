@@ -13,7 +13,7 @@ const Contact = () => {
     <PageTransition>
       <SEO {...seoData.contact} />
 
-      <div className="pt-24 md:pt-32">
+      <div className=" md:pt-12">
         <Suspense fallback={<SectionSkeleton />}>
           <ContactForm />
         </Suspense>

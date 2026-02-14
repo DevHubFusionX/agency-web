@@ -40,7 +40,7 @@ const ContactForm = () => {
   }
 
   return (
-    <Section background="none" className="py-4 bg-gray-50/30">
+    <Section background="none" className="py-2 bg-gray-50/30">
       <div className="mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
@@ -155,7 +155,7 @@ const ContactForm = () => {
             <div className="space-y-12">
               <div className="p-8 bg-blue-600 rounded-[2rem] text-white relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-white/20 transition-colors duration-500" />
-                <h4 className="text-xl font-bold mb-3 relative z-10">No Commitment.</h4>
+                <h4 className="text-xl text-white font-bold mb-3 relative z-10">No Commitment.</h4>
                 <p className="text-blue-50/80 text-sm font-medium leading-relaxed relative z-10">
                   Our discovery calls are 100% free. You'll walk away with actionable insights and a clear strategy, even if we don't work together.
                 </p>
