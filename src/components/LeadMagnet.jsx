@@ -1,9 +1,17 @@
 import { motion } from 'framer-motion'
 import { Download, Check, ArrowRight } from 'lucide-react'
 import Section from './ui/Section'
-import Button from './ui/Button'
+import FormInput from './contact/base/FormInput'
+import FormSubmit from './contact/base/FormSubmit'
+import FormStatus from './contact/base/FormStatus'
+import useContactForm from './contact/hooks/useContactForm'
 
 const LeadMagnet = () => {
+    const { formData, isSubmitting, status, handleChange, handleSubmit } = useContactForm({
+        email: '',
+        subject: 'MVP Playbook Download'
+    }, '/api/email/lead-magnet')
+
     return (
         <Section className="hidden md:block py-24 bg-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
@@ -67,16 +75,31 @@ const LeadMagnet = () => {
                                 ))}
                             </motion.ul>
 
-                            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto lg:mx-0">
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    className="flex-1 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors text-sm"
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-md mx-auto lg:mx-0">
+                                <div className="flex flex-col sm:flex-row gap-4 items-end">
+                                    <FormInput
+                                        label="Work Email"
+                                        name="email"
+                                        type="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="Enter your email"
+                                        className="flex-1 w-full"
+                                        labelClassName="text-gray-400"
+                                    />
+                                    <FormSubmit
+                                        isLoading={isSubmitting}
+                                        text="Get Playbook"
+                                        icon={Download}
+                                        className="pt-0 w-full sm:w-auto"
+                                    />
+                                </div>
+
+                                <FormStatus
+                                    status={status}
+                                    successMessage="Playbook sent to your email!"
+                                    errorMessage="Something went wrong. Please try again."
                                 />
-                                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-2 group">
-                                    Get The Playbook
-                                    <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
-                                </Button>
                             </form>
                         </div>
 

@@ -1,43 +1,26 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, CheckCircle2 } from 'lucide-react'
-import Button from '../ui/Button'
-import LoadingSpinner from '../ui/LoadingSpinner'
+import FormInput from './base/FormInput'
+import FormSelect from './base/FormSelect'
+import FormSubmit from './base/FormSubmit'
+import FormStatus from './base/FormStatus'
+import useContactForm from './hooks/useContactForm'
 
 const HeroLeadForm = ({ compact = false }) => {
-    const [formData, setFormData] = useState({
+    const { formData, isSubmitting, status, errorMessage, handleChange, handleSubmit } = useContactForm({
         name: '',
         email: '',
-        projectType: ''
-    })
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [submitted, setSubmitted] = useState(false)
+        projectType: '',
+        message: ''
+    }, '/api/email/contact')
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
-    }
+    const projectOptions = [
+        { value: 'new-mvp', label: 'New MVP Build' },
+        { value: 'scaling', label: 'Scale Product' },
+        { value: 'discovery', label: 'Discovery' }
+    ]
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        setIsSubmitting(true)
-
-        try {
-            // Simulate form submission
-            await new Promise(resolve => setTimeout(resolve, 1500))
-            console.log('Hero Lead Form Submission:', formData)
-            setSubmitted(true)
-            setFormData({ name: '', email: '', projectType: '' })
-        } catch (error) {
-            console.error('Submission error:', error)
-        } finally {
-            setIsSubmitting(false)
-        }
-    }
-
-    if (submitted) {
+    if (status === 'success') {
         return (
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -61,60 +44,46 @@ const HeroLeadForm = ({ compact = false }) => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Full Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold text-gray-900 placeholder:text-gray-300 text-sm"
-                        placeholder="John Doe"
-                    />
-                </div>
+                <FormInput
+                    label="Full Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    labelClassName="text-[10px]"
+                />
 
-                <div className="space-y-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Work Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold text-gray-900 placeholder:text-gray-300 text-sm"
-                        placeholder="john@company.com"
-                    />
-                </div>
+                <FormInput
+                    label="Work Email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="john@company.com"
+                    labelClassName="text-[10px]"
+                />
 
-                <div className="space-y-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Project Type</label>
-                    <select
-                        name="projectType"
-                        required
-                        value={formData.projectType}
-                        onChange={handleChange}
-                        className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold text-gray-900 appearance-none cursor-pointer text-sm"
-                    >
-                        <option value="">Select Category</option>
-                        <option value="new-mvp">New MVP Build</option>
-                        <option value="scaling">Scale Product</option>
-                        <option value="discovery">Discovery</option>
-                    </select>
-                </div>
+                <FormSelect
+                    label="Project Type"
+                    name="projectType"
+                    value={formData.projectType}
+                    onChange={handleChange}
+                    options={projectOptions}
+                    labelClassName="text-[10px]"
+                />
 
-                <div className="pt-2">
-                    <Button type="submit" size="lg" className="w-full h-14 rounded-xl text-sm font-black uppercase tracking-widest shadow-lg shadow-blue-500/10 group" disabled={isSubmitting}>
-                        {isSubmitting ? (
-                            <LoadingSpinner size="sm" />
-                        ) : (
-                            <span className="flex items-center gap-3">
-                                Claim Free Session
-                                <Calendar size={18} className="group-hover:rotate-12 transition-transform" />
-                            </span>
-                        )}
-                    </Button>
-                </div>
+                <FormSubmit
+                    isLoading={isSubmitting}
+                    text="Claim Free Session"
+                    icon={Calendar}
+                    className="pt-2"
+                />
+
+                <FormStatus
+                    status={status === 'error' ? 'error' : null}
+                    successMessage=""
+                    errorMessage="Submission failed. Please try again."
+                />
             </form>
         </div>
     )

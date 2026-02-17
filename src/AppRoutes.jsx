@@ -11,6 +11,7 @@ const Portfolio = lazy(() => import('./pages/portfolio'))
 const ProjectDetail = lazy(() => import('./components/portfolio/ProjectDetail'))
 const Contact = lazy(() => import('./pages/contact'))
 const Blog = lazy(() => import('./pages/blog'))
+const BlogPostPage = lazy(() => import('./pages/blog/BlogPostPage'))
 const FAQ = lazy(() => import('./pages/faq'))
 const Privacy = lazy(() => import('./pages/Privacy'))
 const Terms = lazy(() => import('./pages/Terms'))
@@ -30,6 +31,7 @@ const AppRoutes = () => {
                     <Route path="/portfolio/:id" element={<ProjectDetail />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPostPage />} />
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/terms" element={<Terms />} />

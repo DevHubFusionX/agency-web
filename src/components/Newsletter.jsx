@@ -1,23 +1,15 @@
-import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Send } from 'lucide-react'
+import FormInput from './contact/base/FormInput'
+import FormSubmit from './contact/base/FormSubmit'
+import FormStatus from './contact/base/FormStatus'
+import useContactForm from './contact/hooks/useContactForm'
 
 const Newsletter = () => {
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState('')
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!email) return
-
-    try {
-      setStatus('loading')
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      setStatus('success')
-      setEmail('')
-    } catch {
-      setStatus('error')
-    }
-  }
+  const { formData, isSubmitting, status, handleChange, handleSubmit } = useContactForm({
+    email: '',
+    subject: 'Newsletter Subscription'
+  }, '/api/email/newsletter')
 
   return (
     <section className="py-16 bg-blue-600">
@@ -30,30 +22,30 @@ const Newsletter = () => {
         </p>
 
         <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-          <div className="flex gap-3">
-            <input
+          <div className="flex flex-col sm:flex-row gap-3 items-end">
+            <FormInput
+              label="Work Email"
+              name="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-300 focus:outline-none"
-              required
+              className="flex-1 w-full"
+              labelClassName="text-blue-100"
             />
-            <button
-              type="submit"
-              disabled={status === 'loading'}
-              className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50"
-            >
-              {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
-            </button>
+            <FormSubmit
+              isLoading={isSubmitting}
+              text="Subscribe"
+              icon={Send}
+              className="pt-0 w-full sm:w-auto"
+            />
           </div>
 
-          {status === 'success' && (
-            <p className="mt-3 text-green-200">Thanks for subscribing!</p>
-          )}
-          {status === 'error' && (
-            <p className="mt-3 text-red-200">Something went wrong. Please try again.</p>
-          )}
+          <FormStatus
+            status={status}
+            successMessage="Thanks for subscribing!"
+            errorMessage="Something went wrong. Please try again."
+          />
         </form>
 
         <p className="text-sm text-blue-200 mt-4">

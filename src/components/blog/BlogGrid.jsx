@@ -1,26 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Calendar, Clock, User, ArrowRight } from 'lucide-react'
 import Section from '../ui/Section'
-import Button from '../ui/Button'
 import LoadingSkeleton from '../ui/LoadingSkeleton'
-import { blogPosts } from '../../data/blogPosts'
+import { useBlogPosts, useBlogCategories } from '../../hooks/useBlog'
 
 const BlogGrid = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
-  const [loading, setLoading] = useState(true)
-
-  const categories = ['All', 'MVP Strategy', 'Product', 'Founder Tips', 'Growth Strategy']
-
-  const filteredPosts = selectedCategory === 'All'
-    ? blogPosts
-    : blogPosts.filter(post => post.category === selectedCategory)
-
-  useEffect(() => {
-    // Simulate loading
-    const timer = setTimeout(() => setLoading(false), 800)
-    return () => clearTimeout(timer)
-  }, [])
+  const categories = useBlogCategories()
+  const { posts, loading, error } = useBlogPosts({ category: selectedCategory })
 
   return (
     <Section className="py-20 bg-gray-50/50">
@@ -42,6 +31,14 @@ const BlogGrid = () => {
         </div>
       </div>
 
+      {/* Error State */}
+      {error && (
+        <div className="text-center py-12">
+          <p className="text-gray-500 mb-2">{error}</p>
+          <p className="text-sm text-gray-400">Blog posts will load once the backend server is running.</p>
+        </div>
+      )}
+
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         <AnimatePresence mode="popLayout">
           {loading ? (
@@ -56,9 +53,9 @@ const BlogGrid = () => {
               </motion.div>
             ))
           ) : (
-            filteredPosts.map((post, index) => (
+            posts.map((post, index) => (
               <motion.div
-                key={post.id}
+                key={post._id || post.id}
                 layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -66,22 +63,26 @@ const BlogGrid = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl hover:border-blue-100 transition-all duration-500"
               >
-                {/* Image Placeholder/Visual */}
-                <div className="h-56 relative overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-blue-600 text-[10px] font-black uppercase tracking-widest rounded-full shadow-sm">
-                      {post.category}
-                    </span>
+                {/* Image */}
+                <Link to={`/blog/${post.slug}`} className="block">
+                  <div className="h-56 relative overflow-hidden bg-gray-100">
+                    {post.image && (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-blue-600 text-[10px] font-black uppercase tracking-widest rounded-full shadow-sm">
+                        {post.category}
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </Link>
 
                 <div className="p-8">
                   {/* Meta */}
@@ -97,9 +98,11 @@ const BlogGrid = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight">
-                    {post.title}
-                  </h3>
+                  <Link to={`/blog/${post.slug}`}>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight">
+                      {post.title}
+                    </h3>
+                  </Link>
 
                   {/* Excerpt */}
                   <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed text-sm font-medium">
@@ -110,13 +113,16 @@ const BlogGrid = () => {
                   <div className="flex items-center justify-between pt-6 border-t border-gray-50">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-xs font-bold border border-blue-100">
-                        {post.author.charAt(0)}
+                        {post.author?.charAt(0) || 'N'}
                       </div>
-                      <span className="text-xs font-bold text-gray-900">{post.author}</span>
+                      <span className="text-xs font-bold text-gray-900">{post.author || 'Nemvol Team'}</span>
                     </div>
-                    <button className="text-blue-600 hover:gap-3 flex items-center gap-2 transition-all duration-300 font-bold text-sm">
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="text-blue-600 hover:gap-3 flex items-center gap-2 transition-all duration-300 font-bold text-sm"
+                    >
                       Read More <ArrowRight size={16} />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -126,7 +132,7 @@ const BlogGrid = () => {
       </div>
 
       {/* Empty State */}
-      {!loading && filteredPosts.length === 0 && (
+      {!loading && !error && posts.length === 0 && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

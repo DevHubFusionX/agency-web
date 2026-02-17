@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nemvol Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --bg-input: #0f172a;
+      --border: #334155;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ─── Login ─── */
+    .login-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .login-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .login-card h1 {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .login-card .subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+
+    .login-card .brand {
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    /* ─── Forms ─── */
+    .form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    textarea { resize: vertical; min-height: 120px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      width: 100%;
+    }
+
+    .btn-primary:hover { background: var(--primary-hover); }
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+
+    .btn-danger {
+      background: transparent;
+      color: var(--danger);
+      border: 1px solid var(--danger);
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+
+    .btn-danger:hover {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-card);
+      color: var(--text);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+
+    /* ─── Dashboard Layout ─── */
+    .dashboard { display: none; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-brand {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--primary);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .topbar-user {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+      padding: 16px 32px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .tab:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .tab.active { color: var(--primary); background: rgba(59, 130, 246, 0.1); }
+
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px;
+    }
+
+    .content-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .content-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    /* ─── Table ─── */
+    .table-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      text-align: left;
+      padding: 14px 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+
+    td {
+      padding: 16px 20px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 500;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-published { background: rgba(34, 197, 94, 0.1); color: var(--success); }
+    .badge-draft { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+    .badge-featured { background: rgba(59, 130, 246, 0.1); color: var(--primary); }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* ─── Modal ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 700px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px;
+    }
+
+    .modal h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .modal-footer {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+    }
+
+    .checkbox-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* ─── Stats ─── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .stat-card .stat-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .stat-card .stat-value {
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    /* ─── Toast ─── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 14px 24px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      z-index: 300;
+      animation: slideUp 0.3s ease;
+      display: none;
+    }
+
+    .toast.show { display: block; }
+    .toast.success { background: var(--success); }
+    .toast.error { background: var(--danger); }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ─── Empty State ─── */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-state p { font-size: 15px; margin-bottom: 16px; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .content { padding: 16px; }
+      .topbar { padding: 12px 16px; }
+      .tabs { padding: 12px 16px; overflow-x: auto; }
+      .form-row { grid-template-columns: 1fr; }
+      .content-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div id="loginScreen" class="login-wrapper">
+    <div class="login-card">
+      <div class="brand">NEMVOL</div>
+      <h1>Admin Dashboard</h1>
+      <p class="subtitle">Sign in to manage your blog and view submissions.</p>
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="loginUsername" placeholder="Enter username" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:8px;">Sign In →</button>
+        <p id="loginError" style="color:var(--danger);font-size:13px;margin-top:12px;display:none;">Invalid credentials</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="dashboard">
+    <div class="topbar">
+      <div class="topbar-brand">NEMVOL ADMIN</div>
+      <div class="topbar-right">
+        <span class="topbar-user" id="adminUser"></span>
+        <button class="btn btn-ghost" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="posts" onclick="switchTab('posts')">📝 Blog Posts</button>
+      <button class="tab" data-tab="stats" onclick="switchTab('stats')">📊 Stats</button>
+    </div>
+
+    <!-- Blog Posts Tab -->
+    <div id="tab-posts" class="content">
+      <div class="content-header">
+        <h2>Blog Posts</h2>
+        <button class="btn btn-primary btn-sm" onclick="openCreateModal()">+ New Post</button>
+      </div>
+
+      <div id="postsTable" class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="postsBody"></tbody>
+        </table>
+      </div>
+
+      <div id="postsEmpty" class="empty-state" style="display:none;">
+        <p>No blog posts yet. Create your first one!</p>
+        <button class="btn btn-primary btn-sm" onclick="openCreateModal()">+ New Post</button>
+      </div>
+    </div>
+
+    <!-- Stats Tab -->
+    <div id="tab-stats" class="content" style="display:none;">
+      <div class="content-header">
+        <h2>Dashboard Stats</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Posts</div>
+          <div class="stat-value" id="statTotal">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Published</div>
+          <div class="stat-value" id="statPublished" style="color:var(--success);">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Drafts</div>
+          <div class="stat-value" id="statDrafts" style="color:var(--warning);">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Featured</div>
+          <div class="stat-value" id="statFeatured" style="color:var(--primary);">0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Modal -->
+  <div id="postModal" class="modal-overlay">
+    <div class="modal">
+      <h3 id="modalTitle">New Blog Post</h3>
+      <form id="postForm">
+        <input type="hidden" id="postId">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="postTitle" placeholder="Enter post title" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Category</label>
+            <input type="text" id="postCategory" placeholder="e.g. MVP Strategy" required>
+          </div>
+          <div class="form-group">
+            <label>Read Time</label>
+            <input type="text" id="postReadTime" placeholder="e.g. 5 min read" value="5 min read">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Excerpt</label>
+          <textarea id="postExcerpt" rows="2" placeholder="Brief description of the post" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Content (Markdown)</label>
+          <textarea id="postContent" rows="10" placeholder="Write your post content in Markdown..." required></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Image URL</label>
+            <input type="url" id="postImage" placeholder="https://images.unsplash.com/...">
+          </div>
+          <div class="form-group">
+            <label>Tags (comma separated)</label>
+            <input type="text" id="postTags" placeholder="MVP, Startup, Guide">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Meta Description</label>
+            <input type="text" id="postMetaDesc" placeholder="SEO description (max 160 chars)" maxlength="160">
+          </div>
+          <div class="form-group">
+            <label>Keywords</label>
+            <input type="text" id="postKeywords" placeholder="SEO keywords">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="checkbox-group">
+            <input type="checkbox" id="postPublished">
+            <label for="postPublished">Published</label>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="postFeatured">
+            <label for="postFeatured">Featured</label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm" id="modalSubmitBtn">Create Post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const API_BASE = window.location.origin
+    let authToken = localStorage.getItem('nemvol_admin_token')
+    let posts = []
+
+    // ─── Auth ─────────────────────────────────────────────
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const username = document.getElementById('loginUsername').value
+      const password = document.getElementById('loginPassword').value
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        })
+
+        const data = await res.json()
+        if (res.ok && data.token) {
+          authToken = data.token
+          localStorage.setItem('nemvol_admin_token', data.token)
+          showDashboard(data.username)
+        } else {
+          document.getElementById('loginError').style.display = 'block'
+        }
+      } catch (err) {
+        document.getElementById('loginError').style.display = 'block'
+      }
+    })
+
+    function showDashboard(username) {
+      document.getElementById('loginScreen').style.display = 'none'
+      document.getElementById('dashboard').style.display = 'block'
+      document.getElementById('adminUser').textContent = username || 'Admin'
+      loadPosts()
+    }
+
+    function logout() {
+      authToken = null
+      localStorage.removeItem('nemvol_admin_token')
+      document.getElementById('loginScreen').style.display = 'flex'
+      document.getElementById('dashboard').style.display = 'none'
+    }
+
+    // Auto-login if token exists
+    if (authToken) {
+      showDashboard('Admin')
+    }
+
+    // ─── API Helpers ──────────────────────────────────────
+    async function apiFetch(url, options = {}) {
+      const res = await fetch(`${API_BASE}${url}`, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+          ...options.headers
+        }
+      })
+
+      if (res.status === 401) {
+        logout()
+        showToast('Session expired. Please login again.', 'error')
+        throw new Error('Unauthorized')
+      }
+
+      return res.json()
+    }
+
+    // ─── Blog Posts ───────────────────────────────────────
+    async function loadPosts() {
+      try {
+        const data = await apiFetch('/api/blog/admin/all')
+        posts = data.data || []
+        renderPosts()
+        updateStats()
+      } catch (err) {
+        console.error('Failed to load posts:', err)
+      }
+    }
+
+    function renderPosts() {
+      const tbody = document.getElementById('postsBody')
+      const empty = document.getElementById('postsEmpty')
+
+      if (posts.length === 0) {
+        tbody.innerHTML = ''
+        empty.style.display = 'block'
+        return
+      }
+
+      empty.style.display = 'none'
+      tbody.innerHTML = posts.map(post => `
+        <tr>
+          <td style="max-width:300px;">
+            <strong>${escapeHtml(post.title)}</strong>
+            ${post.featured ? '<span class="badge badge-featured" style="margin-left:8px;">Featured</span>' : ''}
+          </td>
+          <td>${escapeHtml(post.category)}</td>
+          <td>
+            <span class="badge ${post.published ? 'badge-published' : 'badge-draft'}">
+              ${post.published ? 'Published' : 'Draft'}
+            </span>
+          </td>
+          <td>${new Date(post.date).toLocaleDateString()}</td>
+          <td>
+            <div class="actions">
+              <button class="btn btn-ghost" onclick="editPost('${post._id}')">Edit</button>
+              <button class="btn btn-danger" onclick="deletePost('${post._id}', '${escapeHtml(post.title)}')">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join('')
+    }
+
+    function updateStats() {
+      document.getElementById('statTotal').textContent = posts.length
+      document.getElementById('statPublished').textContent = posts.filter(p => p.published).length
+      document.getElementById('statDrafts').textContent = posts.filter(p => !p.published).length
+      document.getElementById('statFeatured').textContent = posts.filter(p => p.featured).length
+    }
+
+    // ─── Create / Edit Modal ──────────────────────────────
+    function openCreateModal() {
+      document.getElementById('modalTitle').textContent = 'New Blog Post'
+      document.getElementById('modalSubmitBtn').textContent = 'Create Post'
+      document.getElementById('postForm').reset()
+      document.getElementById('postId').value = ''
+      document.getElementById('postModal').classList.add('open')
+    }
+
+    async function editPost(id) {
+      try {
+        const data = await apiFetch(`/api/blog/admin/${id}`)
+        const post = data.data
+
+        document.getElementById('modalTitle').textContent = 'Edit Blog Post'
+        document.getElementById('modalSubmitBtn').textContent = 'Update Post'
+        document.getElementById('postId').value = post._id
+        document.getElementById('postTitle').value = post.title
+        document.getElementById('postCategory').value = post.category
+        document.getElementById('postReadTime').value = post.readTime || ''
+        document.getElementById('postExcerpt').value = post.excerpt
+        document.getElementById('postContent').value = post.content
+        document.getElementById('postImage').value = post.image || ''
+        document.getElementById('postTags').value = (post.tags || []).join(', ')
+        document.getElementById('postMetaDesc').value = post.metaDescription || ''
+        document.getElementById('postKeywords').value = post.keywords || ''
+        document.getElementById('postPublished').checked = post.published
+        document.getElementById('postFeatured').checked = post.featured
+
+        document.getElementById('postModal').classList.add('open')
+      } catch (err) {
+        showToast('Failed to load post', 'error')
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('postModal').classList.remove('open')
+    }
+
+    document.getElementById('postForm').addEventListener('submit', async (e) => {
+      e.preventDefault()
+
+      const id = document.getElementById('postId').value
+      const payload = {
+        title: document.getElementById('postTitle').value,
+        category: document.getElementById('postCategory').value,
+        readTime: document.getElementById('postReadTime').value,
+        excerpt: document.getElementById('postExcerpt').value,
+        content: document.getElementById('postContent').value,
+        image: document.getElementById('postImage').value,
+        tags: document.getElementById('postTags').value.split(',').map(t => t.trim()).filter(Boolean),
+        metaDescription: document.getElementById('postMetaDesc').value,
+        keywords: document.getElementById('postKeywords').value,
+        published: document.getElementById('postPublished').checked,
+        featured: document.getElementById('postFeatured').checked
+      }
+
+      try {
+        if (id) {
+          await apiFetch(`/api/blog/${id}`, { method: 'PUT', body: JSON.stringify(payload) })
+          showToast('Post updated successfully!', 'success')
+        } else {
+          await apiFetch('/api/blog', { method: 'POST', body: JSON.stringify(payload) })
+          showToast('Post created successfully!', 'success')
+        }
+
+        closeModal()
+        loadPosts()
+      } catch (err) {
+        showToast('Failed to save post', 'error')
+      }
+    })
+
+    async function deletePost(id, title) {
+      if (!confirm(`Delete "${title}"? This cannot be undone.`)) return
+
+      try {
+        await apiFetch(`/api/blog/${id}`, { method: 'DELETE' })
+        showToast('Post deleted', 'success')
+        loadPosts()
+      } catch (err) {
+        showToast('Failed to delete post', 'error')
+      }
+    }
+
+    // ─── Tabs ─────────────────────────────────────────────
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'))
+      document.querySelector(`[data-tab="${tab}"]`).classList.add('active')
+      document.querySelectorAll('.content').forEach(c => c.style.display = 'none')
+      document.getElementById(`tab-${tab}`).style.display = 'block'
+    }
+
+    // ─── Toast ────────────────────────────────────────────
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast')
+      toast.textContent = message
+      toast.className = `toast show ${type}`
+      setTimeout(() => toast.classList.remove('show'), 3000)
+    }
+
+    // ─── Utilities ────────────────────────────────────────
+    function escapeHtml(str) {
+      const div = document.createElement('div')
+      div.textContent = str
+      return div.innerHTML
+    }
+
+    // Close modal on overlay click
+    document.getElementById('postModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal()
+    })
+  </script>
+</body>
+</html>
