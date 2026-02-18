@@ -38,7 +38,7 @@ export const faqData = [
     id: 6,
     category: "Timelines",
     question: "Can we really launch a mobile app in under 3 months?",
-    answer: "Yes. By using React Native and a lean mindset, we streamline cross-platform development. Our predefined playbooks and modular architecture allow us to build high-quality mobile apps without starting from scratch every time."
+    answer: "Yes. By using Flutter and a lean mindset, we streamline cross-platform development. Our predefined playbooks and modular architecture allow us to build high-quality mobile apps without starting from scratch every time."
   },
 
   // Pricing

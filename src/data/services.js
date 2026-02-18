@@ -21,14 +21,14 @@ export const services = [
     description: 'Native and cross-platform mobile apps for iOS and Android.',
     icon: '📱',
     features: [
-      'React Native Development',
+      'Flutter Development',
       'iOS Native Development',
       'Android Native Development',
       'App Store Optimization',
       'Push Notifications',
       'Offline Functionality'
     ],
-    technologies: ['React Native', 'Swift', 'Kotlin', 'Firebase'],
+    technologies: ['Flutter', 'Swift', 'Kotlin', 'Firebase'],
     pricing: 'Starting at $8,000'
   },
   {

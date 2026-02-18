@@ -37,8 +37,8 @@ export const companyInfo = {
         },
         {
             name: "Mobile App Development",
-            description: "Cross-platform mobile app development with React Native for iOS and Android",
-            keywords: ["React Native", "mobile app development", "cross-platform development"]
+            description: "Cross-platform mobile app development with Flutter for iOS and Android",
+            keywords: ["Flutter", "mobile app development", "cross-platform development"]
         },
         {
             name: "UI/UX Design",
@@ -56,7 +56,7 @@ export const companyInfo = {
     technologies: {
         frontend: ["React", "Next.js", "Vite", "TailwindCSS", "Framer Motion"],
         backend: ["Node.js", "Express", "FastAPI", "PostgreSQL", "MongoDB"],
-        mobile: ["React Native", "Expo"],
+        mobile: ["Flutter", "Expo"],
         cloud: ["Vercel", "AWS", "Google Cloud"],
         tools: ["Figma", "Git", "GitHub", "Jira"]
     },
@@ -147,7 +147,7 @@ export const companyInfo = {
         },
         {
             question: "What technologies does NEMVOL use?",
-            answer: "We primarily use React and Next.js for web development, React Native for mobile apps, and modern cloud infrastructure like Vercel and AWS."
+            answer: "We primarily use React and Next.js for web development, Flutter for mobile apps, and modern cloud infrastructure like Vercel and AWS."
         },
         {
             question: "How much does MVP development cost at NEMVOL?",
