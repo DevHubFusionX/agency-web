@@ -11,7 +11,6 @@ const ClientLogos = lazy(() => import('../../components/ui/ClientLogos'))
 const ExcellenceMetrics = lazy(() => import('../../components/ExcellenceMetrics'))
 const OurApproach = lazy(() => import('../../components/OurApproach'))
 const CoreCapabilities = lazy(() => import('../../components/CoreCapabilities'))
-const Testimonials = lazy(() => import('../../components/Testimonials'))
 const CompetitivePositioning = lazy(() => import('../../components/CompetitivePositioning'))
 const TargetAudience = lazy(() => import('../../components/TargetAudience'))
 
@@ -36,9 +35,7 @@ const Home = () => {
         <ClientLogos />
       </Suspense>
 
-      <Suspense fallback={<SectionSkeleton />}>
-        <Testimonials />
-      </Suspense>
+     
 
       <Suspense fallback={<SectionSkeleton />}>
         <CompetitivePositioning />
