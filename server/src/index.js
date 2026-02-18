@@ -87,7 +87,7 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
     await connectDB()
 
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
         console.log(`\n🚀 Nemvol API running on http://localhost:${PORT}`)
         console.log(`📧 Email API:  http://localhost:${PORT}/api/email`)
         console.log(`📝 Blog API:   http://localhost:${PORT}/api/blog`)
