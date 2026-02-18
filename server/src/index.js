@@ -38,12 +38,8 @@ app.use(cors({
         // 2. Allow if explicitly whitelisted
         if (allowedOrigins.includes(origin)) return callback(null, true)
 
-        // 3. Allow if it's the same origin as the server itself (dynamic)
-        // Note: In prod, origin usually matches the public URL
-        const isSameOrigin = origin.includes(req?.get('host'))
-        if (isSameOrigin) return callback(null, true)
-
-        callback(null, true) // Default to true to be safe, or callback(new Error('CORS fail'))
+        // 3. Fallback: Check if it's explicitly allowed in our list
+        callback(null, false)
     },
     credentials: true
 }))
