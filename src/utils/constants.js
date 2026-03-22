@@ -1,7 +1,7 @@
 export const COMPANY_INFO = {
   name: 'Agency',
   email: 'nemvolltd@gmail.com',
-  phone: '+1 (555) 123-4567',
+  phone: '09054610119',
   address: '123 Business Ave, New York, NY 10001',
   social: {
     twitter: 'https://twitter.com/agency',

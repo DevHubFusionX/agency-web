@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Smartphone, Mail, Phone, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import Logo from '../ui/Logo'
+import { COMPANY_INFO } from '../../utils/constants'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -200,7 +201,7 @@ const Header = () => {
                     </div>
                     <div className="flex items-center gap-3 text-sm text-gray-600">
                       <Phone size={16} className="text-blue-500" />
-                      <span>+1 (555) 123-4567</span>
+                      <span>{COMPANY_INFO.phone}</span>
                     </div>
                   </div>
                   <div className="mt-4 pt-4 border-t border-gray-200">

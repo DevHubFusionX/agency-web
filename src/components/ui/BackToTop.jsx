@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ChevronUp, MessageCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { COMPANY_INFO } from '../../utils/constants'
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -22,7 +23,7 @@ const BackToTop = () => {
     })
   }
 
-  const whatsappNumber = "1234567890" // Replace with actual number
+  const whatsappNumber = COMPANY_INFO.phone
   const whatsappMessage = encodeURIComponent("Hi Nemvol, I'd like to talk about an MVP project.")
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
