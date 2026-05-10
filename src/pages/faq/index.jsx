@@ -6,7 +6,7 @@ import FAQAccordion from '../../components/faq/FAQAccordion'
 import SectionSkeleton from '../../components/ui/SectionSkeleton'
 
 // Lazy Load Components
-const StrategicEngagement = lazy(() => import('../../components/StrategicEngagement'))
+const StrategicEngagement = lazy(() => import('../../components/StrategicPartnerships'))
 
 const FAQ = () => {
   return (

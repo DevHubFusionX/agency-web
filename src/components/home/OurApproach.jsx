@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Search, PenTool, Code, CheckCircle, TrendingUp } from 'lucide-react'
-import Section from './ui/Section'
+import Section from '../ui/Section'
 
 const Step = ({ number, title, description, icon: Icon, delay, isLast }) => {
     return (
@@ -41,7 +41,7 @@ const Step = ({ number, title, description, icon: Icon, delay, isLast }) => {
     )
 }
 
-import WaveBackground from './ui/WaveBackground'
+import WaveBackground from '../ui/WaveBackground'
 
 // ... existing Step component ...
 

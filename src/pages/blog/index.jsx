@@ -6,7 +6,7 @@ import BlogGrid from '../../components/blog/BlogGrid'
 import SectionSkeleton from '../../components/ui/SectionSkeleton'
 
 // Lazy Load Components
-const StrategicEngagement = lazy(() => import('../../components/StrategicEngagement'))
+const StrategicEngagement = lazy(() => import('../../components/StrategicPartnerships'))
 
 const Blog = () => {
   return (

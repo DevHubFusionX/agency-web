@@ -16,13 +16,10 @@ const Header = () => {
   })
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Portfolio', href: '/portfolio' },
+    { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
-    { name: 'FAQ', href: '/faq' },
-    { name: 'Contact', href: '/contact' },
   ]
 
   const isActive = (path) => location.pathname === path
@@ -37,7 +34,7 @@ const Header = () => {
             style={{ scaleX }}
           />
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center">
             {/* Logo */}
             <Link to="/" className="flex items-center group flex-shrink-0">
               <div className="flex items-center gap-2 transition-transform duration-300 group-hover:scale-[1.02]">

@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, MessageCircle, Calendar, Shield } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import Button from './ui/Button'
-import Section from './ui/Section'
-import Modal from './ui/Modal'
-import HeroLeadForm from './contact/HeroLeadForm'
+import Button from '../ui/Button'
+import Section from '../ui/Section'
+import Modal from '../ui/Modal'
+import HeroLeadForm from '../contact/HeroLeadForm'
 
 const StrategicEngagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)

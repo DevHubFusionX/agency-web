@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Users, Award, Star } from 'lucide-react'
-import Section from './ui/Section'
+import Section from '../ui/Section'
 
 const ExcellenceMetrics = () => {
   return (

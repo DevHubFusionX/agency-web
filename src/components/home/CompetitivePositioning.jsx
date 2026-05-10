@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Check, ArrowRight, Zap, Target, TrendingUp, Shield, Rocket } from 'lucide-react'
-import Section from './ui/Section'
+import Section from '../ui/Section'
 
 const CompetitivePositioning = () => {
     const pillars = [

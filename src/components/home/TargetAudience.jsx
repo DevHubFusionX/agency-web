@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Rocket, Target, Building2, Layers } from 'lucide-react'
-import Section from './ui/Section'
+import Section from '../ui/Section'
 
 const AudienceCard = ({ title, description, icon: Icon, delay }) => {
     return (

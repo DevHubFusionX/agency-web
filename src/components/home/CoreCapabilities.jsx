@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Rocket, Palette, Code2, Settings, ShoppingBag } from 'lucide-react'
-import Section from './ui/Section'
+import Section from '../ui/Section'
 
 const BentoCard = ({ title, description, icon: Icon, capabilities, className, delay, highlight }) => {
   return (
@@ -54,7 +54,7 @@ const BentoCard = ({ title, description, icon: Icon, capabilities, className, de
   )
 }
 
-import WaveBackground from './ui/WaveBackground'
+import WaveBackground from '../ui/WaveBackground'
 
 // ... existing BentoCard component ...
 

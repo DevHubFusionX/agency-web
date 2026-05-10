@@ -9,7 +9,7 @@ import SectionSkeleton from '../../components/ui/SectionSkeleton'
 const ProjectShowcase = lazy(() => import('../../components/portfolio/ProjectShowcase'))
 const ImpactMetrics = lazy(() => import('../../components/portfolio/ImpactMetrics'))
 const TechnicalExpertise = lazy(() => import('../../components/portfolio/TechnicalExpertise'))
-const StrategicEngagement = lazy(() => import('../../components/StrategicEngagement'))
+const StrategicEngagement = lazy(() => import('../../components/StrategicPartnerships'))
 
 const Portfolio = () => {
   return (
