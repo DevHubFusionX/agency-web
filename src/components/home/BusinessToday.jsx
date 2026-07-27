@@ -1,174 +1,285 @@
-import { motion, AnimatePresence } from 'framer-motion'
-import { MessageCircle, Instagram, Landmark, Bike, FileText, XCircle, AlertCircle, Clock } from 'lucide-react'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { 
+  MessageCircle, 
+  Landmark, 
+  Bike, 
+  AlertCircle,
+  Clock, 
+  CheckCircle2, 
+  Sparkles,
+  Terminal,
+  Copy,
+  ChevronRight,
+  TrendingDown
+} from 'lucide-react'
 
-const ProblemNode = ({ icon: Icon, label, status, x, y, delay }) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.8 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay }}
-    animate={{ 
-      x: [0, Math.random() * 10 - 5, 0],
-      y: [0, Math.random() * 10 - 5, 0]
-    }}
-    transition={{
-      x: { duration: 3 + Math.random(), repeat: Infinity, ease: "easeInOut" },
-      y: { duration: 3 + Math.random(), repeat: Infinity, ease: "easeInOut" }
-    }}
-    style={{ left: x, top: y }}
-    className="absolute group"
-  >
-    <div className="relative p-5 bg-white/80 backdrop-blur-md rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/40 flex items-center gap-4 min-w-[240px]">
-      <div className="p-3 bg-red-50 text-red-500 rounded-2xl group-hover:bg-red-500 group-hover:text-white transition-colors duration-300">
-        <Icon size={24} />
-      </div>
-      <div>
-        <h4 className="text-sm font-bold text-gray-900 leading-tight">{label}</h4>
-        <div className="flex items-center gap-1 mt-1">
-          <AlertCircle size={12} className="text-red-400" />
-          <span className="text-[10px] font-bold text-red-400 uppercase tracking-wider">{status}</span>
-        </div>
-      </div>
-    </div>
-  </motion.div>
-)
+// Tab content for the terminal snippet
+const terminalSnippets = {
+  WhatsApp: {
+    command: 'copy --from whatsapp-chat --to excel',
+    output: [
+      '✓ Extracted: Customer name "Amina"',
+      '✓ Extracted: Address "12, Admiralty Way, Lekki"',
+      '⚠ Warning: Item "blue dress" matches multiple SKUs',
+      '⚠ Action: Manual catalog check required'
+    ]
+  },
+  Bank: {
+    command: 'verify --transfer "₦15,000"',
+    output: [
+      '⚠ Search: Multiple transfers found for ₦15,000',
+      '⚠ Pending: Manual bank statement match required',
+      '✗ Alert: Delivery held up for 2.5 hours'
+    ]
+  },
+  Excel: {
+    command: 'check --stock "SKU-402"',
+    output: [
+      '✓ Searching inventory records...',
+      '✗ Inventory Conflict: Excel says 2, physical count is 0',
+      '✗ Error: Over-sold item to customer #302'
+    ]
+  },
+  Logistics: {
+    command: 'ping --rider "Babatunde"',
+    output: [
+      '⚠ Connect: Attempting to call Babatunde...',
+      '⚠ Timeout: Rider Babatunde did not answer the phone',
+      '⚠ Status: Customer Amina is calling for delivery status'
+    ]
+  }
+}
 
 const BusinessToday = () => {
-  return (
-    <section className="py-32 bg-white overflow-hidden relative" id="the-problem">
-      
-      {/* Background Decorative Lines */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none">
-        <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" strokeWidth="1" />
-        </pattern>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
+  const [activeTab, setActiveTab] = useState('WhatsApp')
+  const [isCopied, setIsCopied] = useState(false)
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-20 items-center">
+  const handleCopy = () => {
+    navigator.clipboard.writeText(terminalSnippets[activeTab].command)
+    setIsCopied(true)
+    setTimeout(() => setIsCopied(false), 2000)
+  }
+
+  return (
+    <section className="py-24 md:py-32 bg-white" id="the-problem">
+      <div className="max-w-[1200px] mx-auto px-6">
+        
+        {/* Main Columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
           
-          {/* Left: Impactful Text */}
-          <div className="max-w-xl">
+          {/* Left Column: Headline, Subtext, Code Snippet Box, Docs Button */}
+          <div className="lg:col-span-6 space-y-8">
+            <div className="space-y-4">
+              <motion.h2 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 leading-[1.05] tracking-tight"
+              >
+                The Fragmented Reality. <br />
+                What business feels like today.
+              </motion.h2>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-lg text-gray-500 leading-relaxed font-medium"
+              >
+                You're working too hard because your tools don't talk to each other. It's slow, messy, and you're losing money in the gaps.
+              </motion.p>
+            </div>
+
+            {/* Code / Command Tabs Component */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest mb-8"
+              transition={{ delay: 0.2 }}
+              className="border border-gray-100 rounded-3xl shadow-xl shadow-gray-200/30 overflow-hidden bg-white"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
-              The Fragmented Reality
+              {/* Tab Header Bar */}
+              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-50 bg-[#fafafa]">
+                <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pr-4">
+                  {Object.keys(terminalSnippets).map((tab) => (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-black uppercase tracking-wider transition-colors duration-200 ${
+                        activeTab === tab 
+                          ? 'text-gray-900 bg-white border border-gray-200/80 shadow-sm' 
+                          : 'text-gray-400 hover:text-gray-600'
+                      }`}
+                    >
+                      {tab}
+                    </button>
+                  ))}
+                </div>
+                
+                <button 
+                  onClick={handleCopy}
+                  className="p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-lg hover:bg-white"
+                >
+                  <Copy size={14} className={isCopied ? 'text-emerald-500' : ''} />
+                </button>
+              </div>
+
+              {/* Terminal Box Body */}
+              <div className="p-6 font-mono text-xs sm:text-sm bg-white min-h-[170px] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 text-gray-400 mb-4 select-none">
+                    <span className="text-gray-300">$</span>
+                    <span className="text-gray-800 font-semibold">{terminalSnippets[activeTab].command}</span>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    {terminalSnippets[activeTab].output.map((line, idx) => (
+                      <div 
+                        key={idx} 
+                        className={
+                          line.startsWith('✓') 
+                            ? 'text-emerald-600 font-semibold' 
+                            : line.startsWith('✗') 
+                            ? 'text-red-500 font-semibold' 
+                            : 'text-amber-500 font-semibold'
+                        }
+                      >
+                        {line}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-6 border-t border-gray-50 mt-6 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                  <span>Terminal process</span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                    Warning status
+                  </span>
+                </div>
+              </div>
             </motion.div>
 
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
+            {/* Read Docs Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-[1] tracking-tight mb-8"
+              transition={{ delay: 0.3 }}
             >
-              What <br />
-              business <br />
-              <span className="text-blue-600 italic">feels like </span> <br />
-              today.
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-gray-500 leading-relaxed max-w-md mb-10 md:mb-12"
-            >
-              You're working too hard because your tools don't talk to each other. It's slow, messy, and you're losing money in the gaps.
-            </motion.p>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="grid grid-cols-2 gap-8 mt-12"
-            >
-              <div className="space-y-2">
-                <XCircle className="text-red-500" size={24} />
-                <h4 className="font-bold text-gray-900">Slow Work</h4>
-                <p className="text-sm text-gray-500">Copy-pasting data between five different apps.</p>
-              </div>
-              <div className="space-y-2">
-                <Clock className="text-red-500" size={24} />
-                <h4 className="font-bold text-gray-900">Lost Time</h4>
-                <p className="text-sm text-gray-500">Searching for info that should be in one place.</p>
-              </div>
+              <a 
+                href="#contact"
+                className="inline-block bg-black text-white px-8 py-4 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-gray-800 hover:shadow-xl transition-all duration-300"
+              >
+                Eliminate the Friction
+              </a>
             </motion.div>
           </div>
 
-          {/* Right: The "Chaos Dashboard" Interactive Visual */}
-          <div className="relative h-[600px] w-full rounded-[3rem] bg-gray-50/50 border border-gray-100 overflow-hidden">
-            {/* Center Core */}
-            <motion.div 
-              animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-0 m-auto w-32 h-32 bg-blue-600 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/40 z-20"
-            >
-              <div className="text-white font-black text-center text-xs leading-none">
-                YOUR <br /> BUSINESS
+          {/* Right Column: Key Issues List (inspired by Rerun.io features layout) */}
+          <div className="lg:col-span-6 space-y-12">
+            
+            {/* Header Handle */}
+            <div className="flex items-center justify-between pb-4 border-b border-gray-100">
+              <span className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">@nemvol/system-chaos</span>
+              <span className="flex items-center gap-1 bg-red-50 border border-red-100 text-red-600 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+                <AlertCircle size={10} />
+                5.0 Friction
+              </span>
+            </div>
+
+            {/* List of 3 Key Items */}
+            <div className="space-y-8">
+              
+              {/* Item 1 */}
+              <div className="flex gap-6 items-start">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#ff5e62] via-[#ff9966] to-[#3a7bd5] flex items-center justify-center text-white shadow-lg shrink-0">
+                  <MessageCircle size={28} />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-gray-400">WhatsApp & DM Silos</h3>
+                  <h4 className="text-lg font-bold text-gray-900">Lost in chats. Unanswered DMs.</h4>
+                  <p className="text-sm text-gray-500 leading-relaxed font-medium">
+                    Customers lose interest and walk away while your staff is bogged down manually copy-pasting shipping details.
+                  </p>
+                </div>
               </div>
-              {/* Pulsing rings */}
-              <div className="absolute inset-0 border-2 border-blue-400 rounded-full animate-ping opacity-20" />
-            </motion.div>
 
-            {/* Floating Nodes of Fragmentation */}
-            <ProblemNode 
-              icon={MessageCircle} 
-              label="WhatsApp Orders" 
-              status="Lost in chats" 
-              x="5%" 
-              y="15%" 
-              delay={0.1} 
-            />
-            <ProblemNode 
-              icon={Instagram} 
-              label="Instagram Marketing" 
-              status="Unanswered DMs" 
-              x="55%" 
-              y="10%" 
-              delay={0.2} 
-            />
-            <ProblemNode 
-              icon={Landmark} 
-              label="Bank Payments" 
-              status="Manual Check" 
-              x="10%" 
-              y="45%" 
-              delay={0.3} 
-            />
-            <ProblemNode 
-              icon={Bike} 
-              label="Delivery Tracking" 
-              status="Call Rider" 
-              x="50%" 
-              y="75%" 
-              delay={0.4} 
-            />
-            <ProblemNode 
-              icon={FileText} 
-              label="Manual Excel" 
-              status="Human Error" 
-              x="15%" 
-              y="70%" 
-              delay={0.5} 
-            />
+              {/* Item 2 */}
+              <div className="flex gap-6 items-start">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#11998e] via-[#38ef7d] to-[#ffe259] flex items-center justify-center text-white shadow-lg shrink-0">
+                  <Landmark size={28} />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-gray-400">Manual verification</h3>
+                  <h4 className="text-lg font-bold text-gray-900">Reconciling bank transfers manually.</h4>
+                  <p className="text-sm text-gray-500 leading-relaxed font-medium">
+                    Deliveries are held up waiting for finance to verify payments. Continuous manual screenshot matches waste hours daily.
+                  </p>
+                </div>
+              </div>
 
-            {/* Connecting lines (SVG) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 opacity-10">
-              <line x1="50%" y1="50%" x2="20%" y2="25%" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4 4" />
-              <line x1="50%" y1="50%" x2="70%" y2="20%" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4 4" />
-              <line x1="50%" y1="50%" x2="25%" y2="55%" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4 4" />
-              <line x1="50%" y1="50%" x2="65%" y2="85%" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4 4" />
-              <line x1="50%" y1="50%" x2="30%" y2="80%" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4 4" />
-            </svg>
+              {/* Item 3 */}
+              <div className="flex gap-6 items-start">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#2f80ed] via-[#56ccf2] to-[#f2c94c] flex items-center justify-center text-white shadow-lg shrink-0">
+                  <Bike size={28} />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-gray-400">Logistics overhead</h3>
+                  <h4 className="text-lg font-bold text-gray-900">Calling riders, chasing updates.</h4>
+                  <p className="text-sm text-gray-500 leading-relaxed font-medium">
+                    Negotiating delivery prices over calls while keeping manual ledger records that are perpetually out of sync with actual stock.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Bottom section: Real-World Consequences (resembling Open Source Stewardship) */}
+            <div className="space-y-4 pt-8 border-t border-gray-100">
+              <div className="space-y-1">
+                <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">Real-world overhead</h3>
+                <p className="text-xs text-gray-400 font-medium leading-relaxed">
+                  The actual, day-to-day friction of scaling your operations with disconnected software.
+                </p>
+              </div>
+
+              {/* Consequences Ledger list */}
+              <div className="space-y-2.5">
+                <div className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors duration-200 border border-gray-100/50">
+                  <div className="flex items-center gap-3">
+                    <span className="w-5 h-5 rounded-full bg-red-50 text-red-500 flex items-center justify-center font-bold text-xs">!</span>
+                    <span className="font-mono text-xs text-gray-600">whatsapp/chat</span>
+                    <span className="text-xs text-gray-400">›</span>
+                    <span className="text-xs font-bold text-gray-800">Amina: "Is my order sent yet?"</span>
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-red-500">Unresolved</span>
+                </div>
+                
+                <div className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors duration-200 border border-gray-100/50">
+                  <div className="flex items-center gap-3">
+                    <span className="w-5 h-5 rounded-full bg-red-50 text-red-500 flex items-center justify-center font-bold text-xs">!</span>
+                    <span className="font-mono text-xs text-gray-600">bank/transfer</span>
+                    <span className="text-xs text-gray-400">›</span>
+                    <span className="text-xs font-bold text-gray-800">Lookup transfer verification</span>
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-500">Manual hold</span>
+                </div>
+
+                <div className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors duration-200 border border-gray-100/50">
+                  <div className="flex items-center gap-3">
+                    <span className="w-5 h-5 rounded-full bg-red-50 text-red-500 flex items-center justify-center font-bold text-xs">!</span>
+                    <span className="font-mono text-xs text-gray-600">excel/sheet</span>
+                    <span className="text-xs text-gray-400">›</span>
+                    <span className="text-xs font-bold text-gray-800">Mismatched quantity (SKU-402)</span>
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-red-500">Out of sync</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
         </div>
